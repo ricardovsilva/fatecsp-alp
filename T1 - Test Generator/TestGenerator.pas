@@ -124,6 +124,16 @@ Program TestGenerator ;
     GetsProducts := productsVar;
   End;
   
+  function RequestQuantityOfSells() : integer;
+  var
+    quantity : integer;
+  begin
+    Write('Digite a quantidade de vendas a serem geradas aleatoriamente: ');
+    Readln(quantity);
+    
+    RequestQuantityOfSells := quantity;
+  end
+  
   (*Prints all products of array*)
   procedure PrintProducts(productsArray : Products);
   var
@@ -148,5 +158,5 @@ Begin
   filePath := 'Produtos.txt';
   
   productsList := GetsProducts(filePath);   
-  //sellsQuantity := RequestQuantityOfSells():
+  sellsQuantity := RequestQuantityOfSells():
 End.
