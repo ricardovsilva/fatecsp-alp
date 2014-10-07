@@ -1,0 +1,1547 @@
+﻿
+   #===============================================================#
+   |                                                               |                                      
+   |    ▒▒▒▒▒▒                        ▒▒                           |                                      
+   |    ▒▒  ▒▒  ▒▒▒▒ ▒▒▒▒ ▒▒▒▒▒  ▒▒▒▒ ▒▒ ▒▒▒▒▒ ▒▒▒▒ ▒▒   ▒▒  ▒▒    |                                      
+   |    ▒▒  ▒▒    ▒▒ ▒▒   ▒▒       ▒▒ ▒▒    ▒▒  ▒▒  ▒▒▒ ▒▒▒  ▒▒    |                                      
+   |    ▒▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒▒ ▒▒    ▒▒▒▒▒ ▒▒  ▒▒▒   ▒▒  ▒▒ ▒ ▒▒  ▒▒    |                                      
+   |    ▒▒     ▒▒ ▒▒   ▒▒ ▒▒    ▒▒ ▒▒ ▒▒ ▒▒     ▒▒  ▒▒   ▒▒        |                                      
+   |    ▒▒     ▒▒▒▒▒ ▒▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒ ▒▒ ▒▒▒▒▒ ▒▒▒▒ ▒▒   ▒▒  ▒▒    |
+   |                                                               |
+   |                                                versão 5.2.4   |
+   #===============================================================#
+   #       Bem vindo ao fascinante mundo da linguagem Pascal!      #   
+   #===============================================================#   
+
+
+   #===============================================================#
+   #    Organização desse documento                                #
+   #===============================================================#
+   |                                                               |
+   |    1. Apresentação                                            |
+   |    2. Considerações de uso                                    |
+   |    3. Histórico do compilador                                 |
+   |    4. Subconjunto da linguagem Pascal implementado            |
+   |    5. Download                                                |
+   |    6. Procedimento de instalação                              |
+   |    7. Agradecimentos                                          |
+   |    8. Comentários, críticas e sugestões                       |
+   |                                                               | 
+   #===============================================================#
+
+
+   #===============================================================#
+   #    1.Apresentação                                             #
+   #===============================================================#
+   |                                                               |
+   |      A linguagem Pascal foi desenvolvida pelo professor       |
+   |      Niklaus Wirth no ano de 1972, em Genebra, Suíça. O       |
+   |      nome da linguagem, Pascal, foi uma homenagem ao          |
+   |      filósofo e matemático Blaise Pascal ( 1623-1662 ),       |
+   |      inventor da primeira calculadora mecânica. O desejo      |
+   |      de Wirth ao criar a linguagem Pascal era dispor,         |
+   |      para o ensino de programação, de nova linguagem que      |
+   |      fosse simples, coerente e capaz de incentivar o          |
+   |      desenvolvimento de programas claros e legíveis,          |
+   |      favorecendo ainda a utilização de boas técnicas de       |
+   |      programação.                                             |
+   |                                                               |
+   |      A linguagem Pascal se tornou amplamente conhecida e      |
+   |      utilizada com o lançamento da mundialmente famosa        |
+   |      série de compiladores Turbo Pascal pela Borland, em      |
+   |      1985, devido a uma combinação de simplicidade e          |
+   |      poder.                                                   |
+   |                                                               |
+   |      O compilador Pascalzim, desenvolvido no Departamento de  |
+   |      Ciências da Computação da Universidade de Brasília, é    |
+   |      fruto de muitos anos de pesquisa e trabalho na área de   |
+   |      algoritmos, tradutores e linguagens de programação. Foi  |
+   |      adotado como ferramenta de apoio ao ensino e             |
+   |      aprendizagem da linguagem Pascal pelos alunos            |
+   |      do curso de Introdução à Ciência da Computação, onde     |
+   |      começou a ser utilizado no primeiro semestre de 2000.    |
+   |                                                               |
+   |      No segundo semestre de 2001, e nos semestres que se      |
+   |      seguiram, o compilador foi utilizado pelos meus alunos   |
+   |      do Instituto de Educação Superior de Brasília (IESB)     |
+   |      na disciplina "Algoritmos e Programação Estruturada".    |
+   |                                                               |
+   |      Desde então o compilador vem sendo utilizado em diversas |
+   |      outras instituições de ensino brasileiras, e até mesmo   |
+   |      em Portugal.                                             |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   #    2.Considerações de uso                                     #
+   #===============================================================#
+   |                                                               |
+   |      O compilador Pascalzim foi concebido para fins           |
+   |      educacionais e sua distribuição é livre e gratuita.      |
+   |      O compilador não pode, sob nenhuma circunstância, ser    |
+   |      comercializado.                                          |
+   |                                                               |
+   |      O compilador foi exaustivamente testado, mas ainda assim |
+   |      erros de implementação podem ser eventualmente           |
+   |      encontrados. A correção destes será efetuada tão breve   | 
+   |      quanto sua descoberta, levando ao lançamento de versões  |
+   |      mais atualizadas do compilador.                          |
+   |                                                               |
+   |      O compilador implementa um subconjunto da linguagem      |
+   |      Pascal e contém as estruturas de dados, funções e        |
+   |      comandos mais utilizados por iniciantes no estudo        |
+   |      dessa linguagem. O arquivo de ajuda que acompanha        |
+   |      o produto especifica as instruções suportadas.           |
+   |                                                               |
+   |      Críticas e sugestões são bem vindas!                     |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |    3.Histórico do compilador                                  |
+   #===============================================================#
+   |                                                               | 
+   |      O desenvolvimento do Pascalzim vem sendo feito de        |
+   |      maneira gradativa, e cada nova versão disponibilizada    |
+   |      traz consigo um novo conjunto de recursos e/ou           |
+   |      estruturas da linguagem da linguagem Pascal.             |
+   |                                                               |                      
+   |      Abaixo é exibido um breve resumo do esforço de           |
+   |      desenvolvimento do compilador:                           |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.2.4 (18/10/2013) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Atendendo a inúmeros pedidos, nessa versão o compilador |
+   |       oferece suporte a UNITS! Agora é possível não somente   |
+   |       compilar unidades com o compilador, mas também fazer    |
+   |       uso dessas unidades por meio da clásula 'uses'. ;)      |
+   |                                                               |
+   |     - Importante: O arquivo contendo as unidades usadas pelo  |
+   |       programa Pascal devem estar na mesma pasta que o        |
+   |       programa.                                               |
+   |                                                               |
+   |     - Para ilustrar o suporte a unidades, Guilherme Resende Sá|
+   |       enviou uma belíssima implementação do jogo Uno, que foi |
+   |       adiconado aos programas de exemplo. Obrigado pela       |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Adicionado o recurso de "breakpoints" (pontos de parada)|
+   |       na execução passo a passo. Um ponto de parada pode ser  |
+   |       colocado clicando na régua que exibe a linha do programa|
+   |       ou ainda pelo menu acessado com o botão esquerdo do     |
+   |       mouse. Agora é possível dizer ao compilador em que linha|
+   |       parar a execução do programa. ;)                        |                                                          
+   |                                                               |
+   |     - Implementado o suporte a constantes tipadas (variáveis  |
+   |       que podem receber valores iniciais). A inicialização é  |
+   |       válida para tipos primitivos (integer, char, boolean,   |
+   |       real, string e enumerações), para o tipo set, para o    |
+   |       tipo record, e também para arrays de uma ou mais        | 
+   |       dimensões desses tipos, como no seguinte exemplo:       |
+   |                                                               |
+   |       const                                                   |
+   |          a: real = 60 ;                                       |
+   |          b: array[1..3] of integer = ( 50, 60, 70 );          |
+   |          c: record x, y: integer; end = (x:10 ; y:20) ;       |
+   |                                                               |
+   |       Sugerido por Darlan D. Moro. Obrigado pela              |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Implementado o suporte a variáveis inicializadas, cuja  |
+   |       definição segue a mesma ideia das constantes tipadas,   |
+   |       como no seguinte exemplo:                               |
+   |                                                               |
+   |       var                                                     | 
+   |         d: real = 3.1418 ;                                    |
+   |         e: array[1..3, 1..2] of integer = ((1,2),(3,4),(5,6));|
+   |                                                               |  
+   |       type                                                    | 
+   |           vetor = array[1..2] of record x, y: integer; end ;  |
+   |       var                                                     |   
+   |          f: vetor = ((x:15 ; y:25),(x:35 ; y:45)) ;           |
+   |                                                               |
+   |     - Implementados os procedimentos "clreol", "delline",     |
+   |       "highvideo", "insline", "lowvideo", "normvideo" e       |
+   |       "window", da biblioteca crt.                            |
+   |                                                               |
+   |     - Corrigido um bug na execução da função "int". Esse bug  |
+   |       foi reportado por Cleverson Beckedorff. Obrigado pela   |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Corrigido uma série de bugs envolvendo a passagem de    |
+   |       parâmetros com strings. Esses bugs foram reportados por |
+   |       Guilherme Resende Sá. Obrigado pela contribuição! ;)    |
+   |                                                               |
+   |     - Corrigido um bug que ocorria quando quando uma função   |
+   |       era usada como resultado da expressão de fim de um for. |
+   |       Esses bug foi reportado por Guilherme Resende Sá.       |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Revisada a implementação da função readkey, fazendo uma |
+   |       comparação com o resultado produzido pelo Turbo Pascal. |
+   |       O compilador agora está de acordo com a tabela que      |
+   |       aparece na página 202 do livro 'Pascal Estruturado', 3º |
+   |       Edição, do Harry Farrer. Essa revisão foi necessária    |
+   |       porque alguns bugs bastante específicos foram reportados|
+   |       por Guilherme Resende Sá. Obrigado pela contribuição! ;)|
+   |                                                               |
+   |     - Corrigido alguns bugs envolvendo as funções de executar |
+   |       um programa, procurar ou substituir texto em códigos    |
+   |       muito grandes (mais de 2000 linhas). Esses bugs foram   |
+   |       reportados por Darlan D. Moro. Obrigado pela            |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - A opção "Ferramentas -> Pompt do MS-DOS" não estava     |
+   |       funcionando no Windows 7, agora está. Esse bug foi      |
+   |       reportado por Rafael Barreto. Obrigado pela             |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Atualizado o exemplo 'PaintZim', desenvolvido por       |
+   |       Guilherme Resende Sá:                                   |
+   |                                                               |
+   |       ~ Interface mais amigável e intuitiva;                  |
+   |       ~ Suporte ao conceito de seleção;                       |
+   |       ~ Implementação dos comandos Copiar, Colar, Desfazer e  |
+   |         Refazer;                                              | 
+   |       ~ Adição da opção de exportar o desenho para código em  |
+   |         pascal;                                               |
+   |       ~ O HTML exportado exibe as cores reais do desenho;     |
+   |       ~ Adição da função de exportar arquivos de texto;       |
+   |       ~ Melhoria da forma de escolher caracteres e cores.     |
+   |                                                               |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.2.3 (27/08/2013) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Adicionado o suporte à definição posterior de funções e |
+   |       procedimento por meio da palavra reservada forward.     |
+   |                                                               |
+   |     - Implementados os operadores 'and', 'or', 'xor' e 'not'  |
+   |       para expressões do tipo 'integer', permitindo assim a   |
+   |       manipulação de bits. Sugestão de Geziel Fieldkircher.   |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Nessa versão as seções para declaração de constantes,   |
+   |       tipos, variáveis e funções não seguem uma ordem fixa, e |
+   |       podem aparecer diversas vezes na seção de declaração de |
+   |       dados do programa/função.                               |
+   |                                                               |
+   |     - As variáveis 'array' dos tipos integer, real, boolean,  |
+   |       char e string agora podem ser visualizadas durante a    |
+   |       execução passo a passo.                                 |
+   |                                                               |
+   |     - Implementados os comandos'cursoron' e 'cursoroff', que  |
+   |       possibilitam exibir/ocultar o cursor do teclado.        |
+   |       Sugestão de Raphael Augusto, obrigado pela contribuição!|
+   |       ;)                                                      |
+   |                                                               |
+   |     - Adicionada a verificação de variáveis declaradas com um |
+   |       tipo que não foi definido no programa, como no seguinte |
+   |       exemplo:                                                |
+   |                                                               |
+   |       var variavel : naoExisteEsseTipo;                       |
+   |                                                               |
+   |       Esse problema foi reportado por Raphael Augusto.        |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Adicionado o suporte a expressões na declaração de      |
+   |       constantes, como no seguinte exemplo:                   |
+   |                                                               |
+   |       const AREA = 5 * 2;                                     |
+   |                                                               |
+   |       Esse problema foi reportado por Guilherme Resende Sá.   |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Corrigido uma série de pequenos bugs, que foram         |
+   |       reportados por Raphael Augusto. Obrigado pela           |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Corrigido um pequeno bug na escrita de cadeias em       |
+   |       arquivos binários. Esse problema foi reportado por      |
+   |       Victor G. Netto, obrigado pela contribuição! ;)         |
+   |                                                               |
+   |     - Corrigido um bug na implementação da função filesize.   |
+   |       Ao chamar a função, o programa movia o cursor de        |
+   |       leitura para o final do arquivo, perdendo a posição de  |
+   |       leitura corrente.Esse problema foi reportado por        |
+   |       Victor G. Netto, obrigado pela contribuição! ;)         |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.2.2 (26/04/2013) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Atendendo a inúmeros pedidos, nessa versão o compilador |
+   |       oferece suporte a arquivos binários usando a declaração |
+   |       'file of'. ;)                                           |
+   |                                                               |
+   |     - Implementadas as funções seek, filesize e filepos para  |
+   |       manipulação de arquivos binários.                       |
+   |                                                               |
+   |     - Implementado o suporte ao tipo 'set', juntamente com as |
+   |       operações de união(+), interseccao(*), diferença(-),    |
+   |       igualdade(=), desigualdade(<>), contém (>=) e está      | 
+   |       contido (<=). ;)                                        |
+   |                                                               |
+   |     - As variáveis do tipo 'set' podem ser impressas com o    |
+   |       comando 'writeln', e também podem ser visualizadas      |
+   |       durante a execução passo a passo.                       |
+   |                                                               |
+   |     - As variáveis exibidas durante a execução passo a passo  |
+   |       agora aparecem ordenadas por escopo e nome.             |
+   |                                                               |
+   |     - Adicionado na interface um botão que permite fazer a    |
+   |       identação do código fonte (atalho com ctrl+i).          |
+   |                                                               |
+   |     - Adicionado na interface um comando que permite comentar |
+   |       ou descomentar as linhas selecionadas no editor         |
+   |       (atalho com ctrl+/).                                    |
+   |                                                               |
+   |     - Diversos atalhos para as opções do menu foram           |
+   |       modificados, de maneira a seguir o padrão de editores   |
+   |       conhecidos.                                             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.2.1 (14/11/2012) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Essa é basicamente uma versão de correção de erros, que |
+   |       oferece soluções para uma série de problemas no editor, |
+   |       em funções que recebem strings, e também nos comandos   |
+   |       eof e eoln. Sua finalização só foi possível porque pude |
+   |       contar com a ajuda do colega Guilherme Resende Sá na    |
+   |       identificação de erros, envio de sugestões, realização  |
+   |       de testes e avaliação da versão aqui disponibilizada.   |
+   |       Obrigado por toda sua ajuda nessa tarefa, Guilherme! ;) |
+   |                                                               |
+   |     - Corrigido um erro no pareamento de parênteses do editor.|
+   |       Esse problema foi reportado por Luan Kevin Ferreira.    |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Corrigido um erro na construção das linhas pontilhadas  |
+   |       que ligam os bloco de início/fim no editor. Esse        |
+   |       problema foi reportado pelo professor Victor Nunes, e   |
+   |       também por Guilherme Resende Sá. Obrigado pela          |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Corrigido um erro que acontecia quando uma cadeia era   |
+   |       passada para uma função como resultado do uso de uma    |
+   |       função predefinida, como no seguinte exemplo:           |
+   |                                                               |
+   |          minhaFuncao(upcase(texto))                           | 
+   |                                                               |  
+   |       Nesse caso, a cadeia chegava invertida em "minhaFuncao"!|
+   |       Esse problema foi reportado tanto por Isaque Damião     |
+   |       Siqueira Costa quanto por Guilherme Resende Sá.         |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |  
+   |     - Corrigido um erro que acontecia quando várias cadeias   |
+   |       eram concatenadas usando o comando concat, e depois     |
+   |       enviadas para uma função, como no seguinte exemplo:     |
+   |                                                               |
+   |          minhaFuncao(concat('pascal','zim'))                  | 
+   |                                                               |  
+   |       Nesse caso, as cadeias chegavam concatenadas ao         |
+   |       contrário em "minhaFuncao"! Esse problema foi reportado |
+   |       por Guilherme Resende Sá. ;)                            |
+   |                                                               |  
+   |     - Corrigidos erros nas funções eof, eoln e na leitura de  |
+   |       caracteres em arquivos. Na padrão Pascal, o correto é   |
+   |       encontrar dois caracteres no final da linha, #13 e #10. |
+   |       O compilador, no entanto, retornava ao usuário somente  |
+   |       o caractere #10. Mais um problema reportado por         |
+   |       Guilherme Resende Sá. ;)                                |
+   |                                                               |  
+   |     - A função upcase agora aceita caracteres acentuados e    |
+   |       cedilha. Sugestão de Isaque Damião Siqueira Costa.      |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |  
+   |     - Adicionado aos programas de exemplo uma interessante    |
+   |       implementação do nosso conhecido jogo de Damas. Esse    |
+   |       programa foi desenvolvido por Guilherme Resende Sá, que |
+   |       também é autor do PaintZim.  ;)                         |
+   |                                                               | 
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.2.0 (17/07/2012) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Essa é uma versão histórica! Agora o compilador tem uma |
+   |       janela de debug que permite visualizar o conteudo das   |
+   |       variáveis globais e locais durante a execução passo a   |
+   |       passo! O recurso de debug, no entanto, funciona somente |
+   |       para variáveis do tipo integer, char, boolean, real,    |
+   |       string, text, enumeração, intervalo e ponteiro.         |
+   |                                                               |
+   |     - O compilador utilizava uma versão antiga do componente  |
+   |       SynEdit. Nessa versão o compilador foi atualizado para  |
+   |       usar uma versão mais recente, a versão 2.0.3. ;)        |
+   |                                                               |
+   |     - Implementadas as funções wherex, wherey e adicionada a  |
+   |       variável ioresult.                                      |
+   |                                                               |   
+   |     - Nessa versão o comando write funciona para ponteiros.   |
+   |       Com isso, é possível imprimir na tela o endereço        |
+   |       armazenado em um ponteiro.                              |
+   |                                                               |
+   |     - Desabilitado o botão passo a passo e o item de menu     |
+   |       refazer, no momento em que nenhum editor estiver aberto.|
+   |       Também foi consertado um problema na escolha do estilo  |
+   |       do editor nessa mesma situação. Esses problemas foram   |
+   |       reportados por um usuário anônimo. Obrigado pela        |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Adicionada uma verificação para valores menores que     |
+   |       zero na chamada à função sqrt. Esse problema foi        |
+   |       reportado por Raphael Augusto. Obrigado pela            |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Corrigido um erro envolvendo a leitura de dados em      |
+   |       ponteiros. Esse problema foi reportado pelo professor   |
+   |       Victor Nunes, diretamente de Portugal! Obrigado pela    |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Nessa versão o sistema de help (usando F1) funciona nas |
+   |       novas versões do Windows, como Vista e Windows 7. Esse  |
+   |       problema foi reportado pelo professor Victor Nunes,     |
+   |       diretamente de Portugal! Obrigado pela contribuição! ;) |
+   |                                                               |
+   |     - Adicionado aos programas de exemplo o PaintZim, um      |
+   |       belíssimo editor de figuras ASCII. Esse programa foi    |
+   |       desenvolvido por Guilherme Resende Sá. Obrigado pela    |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.1.3 (12/10/2011) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Implementado o suporte ao tipo subgrupo. Declarações    |
+   |       como as seguintes são agora reconhecidos pelo           |
+   |       compilador:                                             |
+   |                                                               |
+   |          type dias = (seg, ter, qua, qui, sex, sab, dom ) ;   |
+   |          var letras : 'a' ..'z' ;                             |
+   |              duzia : 1 .. 12 ;                                |
+   |              folga : sex .. dom ;                             |
+   |                                                               |
+   |     - Agora as dimensões de um vetor podem ter tipos mais     |
+   |       elaborados, como nas declarações a seguir. Esse recurso |
+   |       foi sugerido por Paulo Alfredo Mainieri Jr. Obrigado    |
+   |       pela contribuição! ;)                                   |
+   |                                                               |
+   |          var a: array[-5 .. 5] of 1 .. 10 ;                   |
+   |              b: array['a' .. 'z'] of 1 .. 10 ;                |
+   |              c: array[false .. true] of 1 .. 10 ;             |
+   |              d: array[qua .. sex] of 1 .. 10 ;                |
+   |              e: array[1+5 .. 3*3] of 1 .. 10 ;                |
+   |              f: array[ 3+1 .. abs(-5) ] of 1 .. 10 ;          |
+   |                                                               |
+   |     - Corrigido um erro envolvendo a atribuição de vetores do |
+   |       do tipo string.                                         |
+   |                                                               |
+   |     - Corrigido um erro envolvendo a função int.              |
+   |                                                               |
+   |     - A definição de tipos de dados foi toda reescrita e      |
+   |       revisada. Agora o código está muito mais confiável e    |
+   |       claro nessa parte. ;)                                   |
+   |                                                               |
+   |     - A avaliação de expressões e funções pré-defindas foi    |
+   |       toda reescrita e revisada. Agora o código está muito    |
+   |       mais confiável e claro nessa parte. ;)                  |
+   |                                                               |
+   |     - Identificados e corrigidos alguns outros pequenos bugs. |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.1.2 (29/05/2011) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Atendendo a diversos pedidos, o comando with foi        |
+   |       implementado nessa versão. ;)                           |
+   |                                                               |
+   |     - Funções agora podem retornar valores de um tipo que foi |
+   |       definido pelo usuário. Até então funções só podiam      |
+   |       retornar valores dos tipos pré-definidos.               |
+   |                                                               |
+   |     - A análise de tipos realizada pelo analisador semântico  |
+   |       foi completamente reescrita. Inúmeros problemas foram   |
+   |       identificados e corrigidos, e agora é possível fazer    |
+   |       atribuições de vetores e matrizes como as seguintes:    |
+   |                                                               |   
+   |       var a, b : array[1..2, 1..4] of integer ;               |
+   |       a := b ; a[2] := b[1] ;                                 |
+   |                                                               |
+   |     - Corrigido um erro no comando trunc, que em raríssimos   |
+   |       casos gerava um arredondamento inválido. Reportado por  |
+   |       Hudson Daniel Santana. Obrigado pela contribuição! ;)   |
+   |                                                               |   
+   |     - Corrigido mais um erro no comando read com caracteres,  |
+   |       que algumas vezes ainda ignorava o comando. Reportado   |
+   |       por Rodrigo Bruno Kehdy. Obrigado pela contribuição! ;) |
+   |                                                               | 
+   |     - Corrigido um erro que acontecia quando se declarava uma |
+   |       variável com o nome long. Reportado por Raphael Vidal   |
+   |       Costa. Obrigado pela contribuição! ;)                   |
+   |                                                               |
+   |     - Adicionado aos programas de exemplo o jogo invasores do |
+   |       espaço. Esse programa foi desenvolvido por João Lucas   |
+   |       Torres. Obrigado pela contribuição! ;)                  |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.1.1 (30/06/2010) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Corrigido um erro no comando read com caracteres. O     |
+   |       compilador estava ignorando esse comando, devido às     |
+   |       otimizações realizadas na versão anterior. Reportado    |
+   |       pelo professor Homero Picollo e seus alunos. Obrigado   |
+   |       pela contribuição, professor! ;)                        |
+   |                                                               |               
+   |     - Corrigido um erro no comando delete. O tamanho da       |
+   |       cadeia produzida pelo comando algumas vezes estava com  |
+   |       o tamanho incorreto. Reportado por Cassio Henrique      |
+   |       Crestani de Oliveira. Obrigado pela contribuição! ;)    |
+   |                                                               |               
+   |     - Antes a função pos aceitava somente strings como        |
+   |       parâmetros. Agora ela aceita também caracteres.         |
+   |       Sugestão de Miguel Moreira, de Portugal.                |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Corrigido mais um erro no comando read. Esse comando    |
+   |       antes funcionava como o realdn, esvaziando o buffer de  |
+   |       leitura. Reportado por Miguel Moreira, de Portugal.     |
+   |        Obrigado pela contribuição! ;)                         |
+   |                                                               |
+   |     - O compilador agora reconhece as constantes maxint e pi. |
+   |       Mais uma sugestão de Miguel Moreira, de Portugal.       |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Atendendo ao pedido de várias pessoas, o arquivo de     |
+   |       ajuda do compilador foi migrado do formato hlp para o   |
+   |       mais recente formato chm. ;)                            |
+   |                                                               |
+   |     - Adicionado aos programas de exemplo uma versao do jogo  |
+   |       PONG. Esse programa foi desenvolvido por Mateus Riva,   |
+   |       Caio Augusto Faria, Denis Miura e Tobias Furtado.       |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Adicionado aos programas de exemplo o jogo Wordkill,    |
+   |       que simula um jogo de espaçonave. Esse programa foi     |
+   |       desenvolvido por Marco André Dinis e José Luis Teixeira.|
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |                                              
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.1.0 (21/06/2009) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Atendendo a diversos pedidos, foi implementada a função |
+   |       copy. A última solicitação veio de Davi Cavalcante.     |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Corrigido um erro que impedia o comando continue de     |
+   |       funcionar corretamente em loops do tipo for.            |
+   |     - Corrigidos vários erros envolvendo a manipulação de     |
+   |       ponteiros. Esses bugs foram reportados pelo professor   |
+   |       Paulo Ribeiro, de Portugal. Obrigado pela contribuição, |
+   |       professor! ;)                                           |
+   |                                                               |
+   |     - Corrigido um erro no comando read com strings. Nesse    |
+   |       caso o compilador ignorava os caracteres que apareciam  |
+   |       após o primeiro espaço em branco. Reportado pelo        |
+   |       professor Eleandro Maschio. Obrigado pela contribuição, |
+   |       professor! ;)                                           |
+   |                                                               |
+   |     - Corrigido um erro no comando case, que acontecia em     |
+   |       raríssimas situações. Reportado por Thiago Ribas da     |
+   |       Silva. Obrigado pela contribuição! ;)                   |
+   |                                                               |
+   |     - Revisada a implementaçao da janela de templates, por    |
+   |       causa de um erro reportado por Léo Douglas Padilha.     |
+   |       Obrigado pela contribuição! ;)                          |
+   |                                                               |
+   |     - Implementadas as funções concat e pos. Sugestão do      |
+   |       professor Marcelo Josué Telles, que ajudou também a     |
+   |       validar essa nova versão antes do lançamento oficial.   |
+   |       Obrigado pela contribuição, professor! ;)               |
+   |                                                               |
+   |     - Agora é possível declarar variáveis antes ou depois de  |
+   |       funções e procedimentos. Embora essa sintaxe não siga o |
+   |       padrão ANSI, ela é aceita pelo Turbo Pascal. Sugestão   |
+   |       de Francisco Grangeiro Diniz Júnior. Obrigado pela      |
+   |       contribuição! ;)                                        |
+   |                                                               |
+   |     - Implementadas as funções frac e int, e também os        |
+   |       comandos insert, delete e exit.                         |
+   |                                                               |
+   |     - Grande parte do código do analisador semântico foi      |
+   |       reescrito, visando melhorar a manutenção do código.     |
+   |                                                               |
+   |     - Várias mensagens de erro foram revisadas e melhoradas.  |
+   |                                                               |
+   |     - Agora é possível selecionar mais de um arquivo na opcao |
+   |       de abrir arquivo.                                       |
+   |                                                               |
+   |     - Foi criada uma nova logomarca para o compilador. ;)     |
+   |                                                               |
+   |     - A interface gráfica do compilador foi modernizada. ;)   |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.0.3 (26/04/2009) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - A função val estava retornando valores incorretos para  |
+   |       o código de erro. O correto seria retornar a posição    |
+   |       onde o erro foi encontrado. A função foi revista, e seu |
+   |       resultado comparado com os resultados do Delphi. Esse   |
+   |       bug foi reportado por Diogo Dias. Obrigado por esse     |
+   |       importante feedback! ;)                                 |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.0.2 (13/04/2009) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Foi necessário fazer uma correção emergencial no        |
+   |       compilador, porque alguns erros sintáticos não estavam  |
+   |       sendo reportados corretamente na versão 5.0.1, como por |
+   |       exemplo o ponto e vírgula antes do else. Esse bug foi   |
+   |       reportado por Francisco Grangeiro Diniz Júnior.         |
+   |       Obrigado pelo importante feedback! ;)                   |
+   |                                                               |
+   |     - Adicionado no banco de templates os comandos write e    |
+   |       read, que estavam faltando.                             |
+   |                                                               |   
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.0.1 (14/03/2009) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Depois de receber a solicitação de diversas pessoas,    |
+   |       resolvi adicionar ao compilador a capacidade de ignorar |
+   |       a declaração uses. Assim, não é mais necessário         |
+   |       comentar a linha de código uses crt.                    |
+   |                                                               |   
+   |     - Atendendo a diversos pedidos, foi adicionada também a   |
+   |       opção de personalizar a cor do editor de código.        |
+   |                                                               |
+   |     - Adicionado no banco de templates vários novos comandos  |
+   |       e funções. Basta pressionar CTRL+Espaço para conferir.  |
+   |       Sugestão de Flaviano Gon Alves. :)                      |
+   |                                                               |
+   |     - As variáveis globais do programa não estavam sendo      |   
+   |       inicializadas com o valor zero. Esse problema foi       |
+   |       reportado por Emmanuel O Monteiro. Obrigado pela        |
+   |       contribuição! :)                                        |
+   |                                                               |
+   |     - A função LN agora verifica se o argumento informado     |   
+   |       é diferente de zero. Esse problema foi reportado por    |
+   |       Francisco Rodrigues Santos. Obrigado pela               |
+   |       contribuição! :)                                        |
+   |                                                               |
+   |     - Adicionado o comando CASE no help. Esse problema foi    |   
+   |       reportado pelo Professor Licinio L. R. Branco.          |
+   |       Obrigado pela contribuição! :)                          |
+   |                                                               |
+   |     - Corrigido o comentário do comando gotoxy no help. Esse  |
+   |       problema foi reportado por William Xavier de Almeida.   |
+   |       Obrigado pela contribuição! :)                          | 
+   |                                                               |
+   |     - Se o arquivo executável estivesse em uso pelo sistema   |
+   |       operacional o compilador não conseguir gerar um novo    |
+   |       arquivo, e também não acusava nenhum erro. Esse         |
+   |       problema foi reportado por Flaviano Gon Alves.          |
+   |       Obrigado  pela contribuição! :)                         |
+   |                                                               |
+   |     - Alterado o nome dos novos arquivos de UntitledX para    |
+   |       NovoX. Sugestão de Flaviano Gon Alves. :)               |
+   |                                                               |
+   |     - Adicionada uma restrição ao comando write, para impedir |
+   |       que uma variável do tipo record seja exibida na tela ou |
+   |       escrita em arquivo. Isso estava gerando erro em tempo   |
+   |       de execução. Esse problema foi reportado por Vitor      |
+   |       Afonso Pinto. Obrigado pela contribuição! :)            | 
+   |                                                               |
+   |     - Realizada uma série de outras pequenas otimizações.     |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 5.0 (02/04/2007) ---------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Depois de vários meses sem lançar uma nova versão do    |   
+   |       compilador, foi adicionado um recurso há muito tempo    |
+   |       desejado por todos: a execução passo a passo de         |
+   |       programas! :)                                           |
+   |                                                               |
+   |                                                               |
+   |     - Corrigido um erro envolvendo passagem de parâmetros.    |   
+   |       Obrigado, Jefferson Chaves, por detectar e reportar     |
+   |       esse bug!                                               |
+   |                                                               |  
+   |     - Quando o usuário pressiona CTRL+PAGEUP o editor passa   |
+   |       para o próximo editor. CTRL+PAGEDOWN volta para o       |
+   |       editor anterior. Sugestão de Júnior Golçalvez!          | 
+   |                                                               |
+   |                                                               |
+   |     - Corrigido uma série de outros pequenos bugs             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.09 (30/01/2006) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Corrigido uma série de pequenos bugs                    |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.08 (07/09/2005) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Corrigido uma série de pequenos bugs envolvendo         |   
+   |       vetores, registros e atribuições com tipos definidos.   |
+   |       Obrigado, beta-testers! :)                              |
+   |                                                               |
+   |     - Reescrito e revisado grande parte do código, incluindo  |
+   |       o analisador léxico, sintático e semântico.             |
+   |                                                               |
+   |    -  Agora, ao clicar no botão fechar, a janela preta não    |
+   |       fecha. :)                                               |
+   |                                                               |
+   |    -  Usando CTRL+C, pode-se parar a execução do programa     |
+   |       (útil em loops infinitos)                               |
+   |                                                               |
+   |    -  Implementado o operador XOR (sim, não havia xor antes!) |
+   |                                                               |
+   |    -  Agora o compilador salva o estilo de editor             |
+   |       selecionado, bem como o tamanho da fonte.               |
+   |                                                               |
+   |    -  Adicionado aos programas de exemplo um interessante     |
+   |       jogo de labirinto, desenvolvido por mim. ;)             |
+   |                                                               |
+   |    -  Adicionado vários outros exemplos.                      |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.07 (16/04/2004) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Corrigidos alguns pequenos bugs no editor:              |
+   |        => Revisado o pareamento Begin-End, que identificava   |
+   |           incorretamente esses marcadores em "endereco"       | 
+   |           etc.                                                |
+   |        => Desabilitado pareamento Begin-End em comentarios    |
+   |        => Amenizado SÉRIO problema de lentidão do editor      |
+   |            para programas muito extensos.                     |
+   |                                                               |
+   |      - Corrigido um SÉRIO problema com o comando 'val',       |
+   |        quando chamado com variaveis do tipo char.             |
+   |                                                               |
+   |      - Corrigido um SÉRIO problema ao retornar strings em     |
+   |        funções.                                               |
+   |                                                               |
+   |      - Corrigido um SÉRIO problema ao ler reais de arquivo.   |
+   |                                                               |
+   |      - Corrigido um SÉRIO problema ao ler várias variáveis    |
+   |        de arquivo, em um mesmo comando READ.                  |
+   |                                                               |
+   |      - Revisado os comandos para leitura de strings em        |
+   |        arquivos.                                              |
+   |                                                               | 
+   |      - Implementada as funções EOLN, KEYPRESSED e o comando   |
+   |        STR                                                    |
+   |                                                               |
+   |      - Sobrecarregada a função UPCASE para receber cadeias    |
+   |                                                               |
+   |      - Agora CTRL+C não fecha mais a janela estilo DOS        |
+   |                                                               |
+   |      - Adicionado o estilo de editor Dark Pascal              |
+   |                                                               |
+   |      - Corrigidos alguns outros pequenos bugs...              |
+   |                                                               |
+   |      - Mais uma vez, agradeço ao colega Leonardo Pignataro    |
+   |        (beta-tester do Pzim) e aos alunos do curso            |
+   |        de ICC do 2º semestre de 2003 na Unb pela importante   |
+   |        ajuda na detecção destes erros e sugestões. ;)         |
+   |                                                               |
+   |      - Corrigido um bug na passagem de parametros de tipo     |
+   |        definido para funcoes. Reportado por Paulo Marcos      |
+   |        Figueiredo de Andrade, e também pelo pessoal da UnB.   |
+   |        Obrigado! ;)                                           |
+   |                                                               |
+   |      - Adicionado mais alguns programas de exemplo, enviados  |
+   |        por Rodrigo Garé Pissarro (beta-tester do Pzim). ;)    |
+   |                                                               |
+   |      - Adicionado aos programas de exemplo um belíssimo jogo  |
+   |        estilo tetris, desenvolvido por Leonardo Pignataro     |
+   |        (beta-tester do Pzim). ;)                              |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.06 (25/10/2003) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Corrigido um pequeno problema de overflow na leitura    |
+   |       de vetores de strings.                                  |
+   |                                                               |
+   |     - Inteiros agora tem 4 bytes, e variam de -2.147.483.647  |
+   |       até 2.147.483.647.                                      |
+   |                                                               |
+   |     - Detectado e corrigido um problema envolvendo a          |
+   |       precisão de números reais. Antes a atribuição:          |
+   |                                                               |
+   |        r := 12345678901 ;                                     |
+   |                                                               |
+   |        Resultava em:                                          |
+   |                                                               |
+   |        r = 12345678848.000000                                 |
+   |                                                               |
+   |      - Detectado e corrigido um pequeno bug que ocorria       |
+   |        no comando case, em raríssimas situações.              |
+   |                                                               |
+   |      - Erros sintáticos comuns, como ausência de ponto e      |
+   |        vírgula antes de um comando e ponto e vírgula antes    |
+   |        de um else, são agora reportados de forma mais         |
+   |        acurada.                                               |
+   |                                                               |
+   |      - Corrigido problema com a opção de substituir...        |
+   |                                                               |
+   |      - Habilitada a tecla TAB para o editor.                  |
+   |                                                               |
+   |      - Habilitado CTRL+C para parar a execução de um          |
+   |        programa, sem fechar o compilador.                     |
+   |                                                               |
+   |      - Agradeço ao colega Leonardo Pignataro e aos alunos     |
+   |        do curso de ICC do 2º semestre de 2003 na Unb pela     |
+   |        importante ajuda na detecção de erros, contribuição    |
+   |        com sugestões, e também pela ajuda nos testes dessa    |
+   |        nova versão. ;)                                        |
+   |                                                               |
+   |      - Corrigido um bug envolvendo a passagem de valores de   |
+   |        tipos definidos para funções e procedimentos - erro    |
+   |        reportado por Gilson Marcos Nogacz. ;)                 |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.05 (11/08/2003) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - Nessa versão foi implementado o suporte a ponteiros     |
+   |       (graças a importante ajuda de Alex Sandro Garzão).      |
+   |                                                               |
+   |     - Nessa versão foi implementado o suporte a tipos         |
+   |       enumerados.                                             |
+   |                                                               |
+   |     - O editor foi substituído pelo em desenvolvimento no     |
+   |       projeto open source SynEdit.                            |
+   |                                                               | 
+   |     - O editor agora aponta, através de uma linha vertical,   |
+   |       o início e o fim de blocos de código (begin/end)        |
+   |                                                               |
+   |     - O editor agora aponta, em destaque, o pareamento de     |
+   |       parenteses (em funções e expressões) e colchetes        |
+   |       (em vetores).                                           |
+   |                                                               |
+   |     - A definição de tipos foi revista. Agora, é possível     |
+   |       declarar novos tipos da forma:                          |
+   |                                                               |
+   |       Type novoTipo = tipoExistente ;                         |
+   |                                                               |
+   |       Até a versão anterior, só era possível declarar tipos   |
+   |       definidos registro e vetor.                             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÃO 4.04 (24/01/2003) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |     - A pedido de inúmeras pessoas... Nessa versão o Pzim     |
+   |       é capaz de gerar arquivos executáveis!                  |
+   |       O arquivo executável contém, além do código do          |
+   |       interpretador, o código compilado do programa fonte.    |
+   |       Dessa forma, os executáveis gerados pelo compilador     |
+   |       não chegam a ser são tão pequenos quanto os gerados     |
+   |       por outros compiladores mais avançados, como o Turbo    |
+   |       Pascal da Borland, que geram código assembler...        |
+   |       Mas o importante é que agora o Pzim pode agora ser      |
+   |       utilizado para construir programas reais! :~            |
+   |                                                               |
+   |     - Nessa versão o Pzim suporta comentários delimitados     |
+   |       pelos marcadores (* e *)                                |
+   |                                                               |
+   |     - Benjamin y sus alunos :) reportaram que as funções      |
+   |       round, trunc e abs não estavam funcionando da forma     |
+   |       correta para round(1.2), trunc(-0.05) e abs(0.453).     |
+   |       Essas funções foram então reescritas.                   |
+   |                                                               |
+   |     - Daniel Emilio apontou um exemplo de vetores onde o      |
+   |       Pzim não se comportava como em outros compiladores,     |
+   |       a exemplo o Turbo Pascal:                               |
+   |                                                               |
+   |       type nota = array [1..3, 1..4] of real;                 |
+   |                                                               |
+   |       vnota[1,1]:=4.5;  // Válido na versão 4.03              |
+   |       vnota[1][1]:=4.5; // Não aceita na versão 4.03 :(       |
+   |                                                               |
+   |       O tratamento de vetores foi completamente revisado,     |
+   |       e o comportamento desejado foi implementado nesta       |
+   |       nova versão.                                            |
+   |                                                               |
+   |     - Meus alunos do IESB reportaram que os itens do menu     |
+   |       do Pzim não estavam sendo corretamente acionados        |
+   |       pelas teclas CTRL+<algo>. Isso foi consertado nesta     |
+   |       nova versão. Obrigado pela ajuda, meus pupilos! :~      |
+   |                                                               |
+   |     - Nessa versão é possível acessar a ajuda rapidamente,    |
+   |       colocando o cursor do editor sobre uma palavra e        |
+   |       pressionando F1. Por exemplo, podemos posicionar o      |
+   |       cursor sobre a palavra "while" e pressionar F1 para     |
+   |       abrir a ajuda no tópico referente a este comando.       |
+   |                                                               |
+   |     - Muito do código do compilador foi reescrito, com        |
+   |       a intenção de portar o código (originalmente            |
+   |       escrito em C puro) para C++. O analisador léxico,       |
+   |       o analisador sintático e o interpretador foram          |
+   |       revisados e reescritos. Algumas revisões foram          |
+   |       também efetuadas no analisador semântico.               |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 4.03 (04/08/2002) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Implementados os comandos break e continue.            |
+   |                                                               |
+   |      - Editor clássico (ao estilo do Turbo Pascal)            |
+   |                                                               |
+   |      - O interpretador de código e boa parte do analisador    |
+   |        semântico foram reescritos.                            |
+   |                                                               |
+   |      - Muitos bugs foram descobertos e consertados.           |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 4.02 (11/04/2002) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Agora ficou mais fácil trabalhar com seus programas    |
+   |        escritos em Pascal. Foi adicionado ao compilador o     |
+   |        Pascalzim Explorer, um utililitário que permite a      |
+   |        navegação pelo sistema de arquivos do Windows para     |
+   |        localização de arquivos com extensão pas.              |
+   |                                                               |
+   |      - Agora expressões contendo os operadores AND e OR são   |
+   |        avaliadas em curto-circuito, a exemplo do compilador   |
+   |        Turbo Pascal. Dessa forma, se o primeiro operando do   |
+   |        AND for avaliado em false, o segundo não é analisado.  |
+   |        Também, se o primeiro operando do OR for avaliado em   |
+   |        true, o segundo o operando não é analisado.            |
+   |                                                               |
+   |      - Agora o comando case admite intervalos como 1..5 nas   |
+   |        opções de seleção.                                     |
+   |                                                               |
+   |      - Weber - Rio de Janeiro - enviou um email reportando    |
+   |        que o comando de atribuição soma:= exp(ln(5)*2) não    |
+   |        estava sendo executado adequadamente. Graças a este    |
+   |        email consegui detectar e corrigir um erro que vinha   |
+   |        sendo gerado na avaliacao de certas expressões,        |
+   |        particularmente as expressões que faziam uso de        |
+   |        funções matemáticas como exp, ln, sin, etc. Obrigado   |
+   |        pela ajuda na detecção destes erros, Weber!            |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 4.01 (11/04/2002) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - O comando case agora é reconhecido pelo compilador.    |
+   |                                                               |
+   |      - Foi implementado o comando readln ; ( equivalente a    |
+   |        um readkey )                                           |
+   |                                                               |
+   |      - Foram implementados os comando delay e val.            |
+   |        Obrigado, Luiz Marcelo, pelas sugestões, e por         |
+   |        ajudar na validação da versão 4.01 beta!               |
+   |                                                               |
+   |      - Ricardo Costa enviou um email reportando dois erros    |
+   |        de implementação envolvendo o analisador semântico.    |
+   |        Primeiro erro: estava sendo gerando uma instrução      |
+   |        errada para comparação < entre reais. Segundo erro:    |
+   |        uma constante real, declarada em const, estava         |
+   |        perdendo sua precisão decimal. Obrigado pela ajuda     |
+   |        na detecção destes erros, Ricardo, e por ajudar a      |
+   |        validar a versão 4.01 beta!                            |
+   |                                                               |
+   |      - Até a versão 4.0 o primeiro caractere de uma string    |
+   |        estava sendo referenciado pela posição zero (como      |
+   |        em Java e C++). Nessa nova versão, esse caractere é    |
+   |        referenciado pela posição um (de acordo com a          |
+   |        linguagem Pascal padrão).                              |
+   |                                                               |
+   |      - Pequenos problemas foram detectados e corrigidos.      |
+   |                                                               |
+   |      - Foram adicionados templates para os comandos case,     |
+   |        readln e writeln.                                      |
+   |                                                               |
+   |      - Foi adicionado um atalho para a calculadora do         |
+   |        Windows.                                               |
+   |                                                               |
+   |      - Foi adicionada opção Ir para a linha...                |
+   |                                                               |
+   |      - O compilador agora pede uma confirmação do usuário     |
+   |       antes de sobrescrer um arquivo já existente, na opção   |
+   |       Salvar Como.                                            |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 4.0 (25/01/2002) ---------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      O editor do compilador foi consideravelmente             |
+   |      aprimorado, levando à versão 4.0! Agora:                 |
+   |                                                               |
+   |      - Os elementos léxicos do programa fonte apresentam      |
+   |        uma formatação própria, no estilo de compiladores      |
+   |        como o Turbo Pascal da Borland.                        |
+   |                                                               |
+   |      - O editor apresenta uma barra vertical mostrando        |
+   |        as linhas do programa fonte.                           |
+   |                                                               |
+   |      - O editor disponibiliza agora templates para os         |
+   |        comandos mais utilizados.                              | 
+   |                                                               |
+   |      - É possível trabalhar em vários arquivos fonte          |
+   |        ao mesmo tempo.                                        |
+   |                                                               |
+   |      - Foi removida a opção de alterar a fonte e a cor        |
+   |        de fundo do editor.                                    |
+   |                                                               |
+   |                                                               |
+   |      Essas alterações não seriam possíveis sem a              |
+   |      considerável ajuda de Andrei Prygounkov, autor da        |
+   |      biblioteca de componentes R&A Library.                   |
+   |      Thanks a lot, Andrei!                                    |
+   |                                                               |
+   |      Além disso, nessa nova versão, foram adicionados:        |
+   |                                                               |
+   |      - O comando randomize.                                   |
+   |                                                               |
+   |      - As funções upcase, random e readkey (antes             |
+   |        só existia o comando readkey).                         |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.16 (13/11/2001) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram identificados e corrigidos alguns pequenos       |
+   |        bugs envolvendo alocação dinâmica de memória pelo      |
+   |        compilador. Essa versão está muito menos sujeita a     |
+   |        problemas e exibição de mensagens de erro dessa        |
+   |        natureza (principalmente quando o programa é           |
+   |        fechado :) ).                                          |
+   |                                                               |
+   |      - Foram corrigidas algumas falhas associadas ao          |
+   |        tratamento de arquivos. Esta nova versão é             |
+   |        imprescindível se você está construindo programas      |
+   |        que fazem uso de arquivos.                             |
+   |                                                               |
+   |      - Foram corrigidas algumas pequenas falhas na            |
+   |        passagem de parâmetros para funções. Até a versão      |
+   |        anterior era possível declarar uma função que          |
+   |        espera n parâmetros e chamá-la sem passar nenhum       |
+   |        dos parâmetros. Também, era possível chamar uma        |
+   |        função sem parâmetros passando a ela parâmetros.       |
+   |        Esse tratamento de parâmetros foi incorporado à        |
+   |        nova versão do compilador. Agradeço ao aluno           |
+   |        Eolisses Ferreira Leopoldino, IESB, pela               |
+   |        importante ajuda ao detectar a falta de tratamento     |
+   |        destes casos de passagem de parâmetro!                 |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.15 (08/10/2001) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram implementadas no editor as opções de localizar   |
+   |        e substituir. Também um problema envolvendo a troca    |
+   |        da fonte usada pelo editor foi corrigido.              |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.14 (02/10/2001) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Essa nova versão corrige alguns pequenos bugs. Além    |
+   |        disso, se a fonte ou a cor de fundo utilizada pelo     |
+   |        editor for modificada a nova configuração              |
+   |        automaticamente aparecerá quando o programa for        |
+   |        executado.                                             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.13 (27/08/2001) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      Depois de mais de um ano sem uma nova atualização, o     |
+   |      Pascalzim foi recompilado. Foi incluída a                |
+   |      possibilidade de comentar uma linha de código com //,    |
+   |      de forma semelhante às linguagens C e Java.              |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.12 (07/11/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - O analisador léxico foi totalmente reescrito. Agora    |
+   |        é possível executar um programa Pascal sem que seja    |
+   |        necessário salvar o arquivo fonte. Com essa mudança    |
+   |        o tempo de compilação diminuiu consideravelmente.      |
+   |                                                               |
+   |      - Foi corrigido um erro na implementação da função abs   |
+   |        para reais - a função estava truncando reais.          |
+   |                                                               |
+   |      - Erros envolvendo a leitura de dados de arquivos        |
+   |        foram encontrados e consertados.                       |
+   |                                                               |
+   |      - Foi implementado um menu popup para o editor,          |
+   |        contendo funções como copiar, colar e executar!        |
+   |                                                               |
+   |      - Outros pequenos erros foram consertados.               |
+   |                                                               |
+   |      Agradeço ao professor Homero ( Departamento de           |
+   |      Ciência da Computação da Universidade de                 |
+   |      Brasília ) pela importante ajuda em sugestões,           |
+   |      teste e detecção de erros no compilador!                 |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.11 (15/08/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Novos erros envolvendo a passagem de parâmetros        |
+   |        foram encontrados e corrigidos.                        |
+   |                                                               |
+   |      - Nessa nova versão é possível declarar os intervalos    |
+   |        de um vetor através de constantes inteiras             |
+   |        declaradas na seção const, como em: Const max = 5 ;    |
+   |                                                               |
+   |        Var vetor : array [ 1 ... max , 1.. max ] of integer;  |
+   |                                                               |
+   |      - Foi implementado um menu Popup para o Editor.          |
+   |        Através desse menu é possível acessar facilmente       |
+   |        os comandos Editar, Recortar e Colar, além das         |
+   |        funções de formatação da cor de fundo e da fonte       |
+   |        do editor. Através desse menu é possível também        |
+   |        acessar a função Executar!                             | 
+   |                                                               |
+   |      - O compilador guarda agora a informação sobre os        |
+   |        cinco últimos arquivos abertos.                        |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.10b (07/06/2000) -------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Todo o código envolvendo passagem de parâmetros        |
+   |        por valor e referência para funções e procedimentos    |
+   |        foi reescrito, e inúmeros erros de implementação       |
+   |        foram corrigidos. Muitas novas possibilidades de       |
+   |        passagem, antes não previstas, foram implementadas.    |
+   |                                                               |
+   |      - O uso do comando read para leitura de cadeias em       |
+   |        arquivos texto foi modificado, de forma a funcionar    |
+   |        como no compilador Turbo Pascal da Borland. Agora      |
+   |        uma sequência de comandos como:                        |
+   |                                                               |
+   |        Var cadeia : string [ 20 ] ;                           |
+   |          ....                                                 |
+   |          Read ( arquivo , cadeia )                            |
+   |                                                               |
+   |                                                               |
+   |        Lê, do arquivo associado a arquivo, uma cadeia         |
+   |        contendo 20 caracteres, ou todos os caracteres         |
+   |        contidos em uma linha do arquivo se a linha conter     |
+   |        menos de 20 caracteres.                                |
+   |                                                               |
+   |      - Novos bugs foram identificados e corrigidos.           |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.09 (07/06/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram detectados e corrigidos um conjunto de bugs      |
+   |        que o compilador vinha trazendo até esta versão.       |
+   |        Anteriormente a execução de determinados programas     |
+   |        causava estouro de memória, fazendo com que o          |
+   |        compilador finalizasse prematuramente. Com a correção  |
+   |        de alguns destes bugs, o compilador se tornou mais     |
+   |        estável ! Agradeço ao aluno Rafael Faria Braga, UnB,   |
+   |        pela importante ajuda na detecção destes erros!        |
+   |                                                               |
+   |      - Revisado o comando Assign.                             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.08 (06/06/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Os comandos para abertura de arquivos ( Reset,         |
+   |        Rewrite, Append ) foram revisados.                     |
+   |                                                               |
+   |      - A função EOF foi revisada.                             |
+   |                                                               |
+   |      - Foi implementada a escrita de caracteres acentuados.   |
+   |        Agora é possível imprimir um literal como:             |
+   |                                                               |
+   |        writeln ( 'Essa escrita correta só é possível a        |
+   |                   partir dessa nova versão !' ) ;             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.07 (30/05/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram revisadas as operações de leitura de dados       |
+   |        (read) em arquivos.                                    |
+   |                                                               |
+   |      - O esquema usado para reportar mensagens de erro foi    |
+   |        reestruturado. Agora as mensagens de erro aparecem     |
+   |        na janela do editor.                                   |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.06 (24/05/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram revisadas as definições de tipos através da      |
+   |        palavra reservada Type. Alguns pequenos bugs foram     |
+   |        encontrados e consertados.                             |
+   |                                                               |
+   |      - Foi corrigido um bug envolvendo a leitura de           |
+   |        múltiplas variáveis no comando read e readln.          |
+   |                                                               |
+   |      - Foram reescritas as rotinas de adição e impressão de   |
+   |        cadeias.                                               |
+   |                                                               |
+   |      - Foi implementada a verificação de divisão por zero.    |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.05 (11/05/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foi habilitado o uso dos comandos for...to e           |
+   |        for...downto para variáveis do tipo char .             |
+   |                                                               |
+   |      - O operador / foi revisado. A divisão de inteiros,      |
+   |        até a versão anterior do compilador, estava gerando    |
+   |        uma instrução div no processo de divisão .             |
+   |                                                               |
+   |      - A definição das cadeias de caracteres (strings) foi    |
+   |        revisada. Agora é possível acessar elementos           |
+   |        individuais das cadeias.                               |
+   |                                                               |
+   |      - Todas as operações envolvendo cadeias de               |
+   |        caracteres foram revisadas.                            |
+   |                                                               |
+   |      - O comando de atribuição foi revisado.                  |
+   |                                                               |
+   |      - As operações envolvendo vetores foram revisadas.       |
+   |        Alguns bugs foram encontrados e consertados.           |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.04 (02/05/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foi desabilitada a opção de criação obrigatória do     |
+   |        arquivo xxx.zim.                                       |
+   |                                                               |
+   |      - Foram revisadas as expressões lógicas. Pequenos        |
+   |        bugs foram consertados.                                |
+   |                                                               |
+   |      - Foram revisados os comandos de leitura e escrita       |
+   |        em arquivo.                                            |
+   |                                                               |
+   |      - Foi implementada a especificação de parâmetros         |
+   |        formatadores para os comandos write e writeln.         |
+   |        O compilador, nessa nova versão, reconhece um          |
+   |        comando Pascal como:                                   |
+   |                                                               |
+   |        writeln ( 3.141516 : 3 : 2 ) ;                         |
+   |                                                               |
+   |      - O compilador, nessa versão, aceita comandos            |
+   |        writeln com a seguinte sintaxe :                       |
+   |                                                               |
+   |        writeln ;                                              |
+   |                                                               |
+   |      - O tópico referente aos comandos write e writeln        |
+   |        no arquivo de help foi atualizado.                     |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.03 (18/04/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram atualizadas as mensagens geradas para os         |
+   |        erros sintáticos do compilador. Agora os erros         |
+   |        sintáticos são reportados mais acuradamente.           |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.02 (17/04/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - O arquivo de help foi reescrito e atualizado com       |
+   |        as novas funções implementadas na versão 3.01.         |
+   |                                                               |
+   |      - Foi corrigido um pequeno bug que fazia com que o       |
+   |        compilador travasse ao executar determinados           |
+   |        programas.                                             |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.01 (13/04/2000) --------------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foram implementadas as funções ln, exp, sqr, sqrt,     |
+   |        abs, trunc, round, sin, cos, arctan, odd, succ,        |
+   |        pred, predefinidas na linguagem Pascal.                |
+   |                                                               |
+   |      - Foram implementados os comandos de incremento e        |
+   |        decremento de variáveis inc e dec.                     |
+   |                                                               |
+   |      - Foi implementado o suporte a múltiplas entradas        |
+   |        nos comandos read e readln.                            |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 3.0 (fevereiro de 2000) --------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - O compilador foi portado para C++ Builder, e embutido  |
+   |        em um ambiente de editoração visual;                   |
+   |                                                               |
+   |      - Inúmeros bugs foram identificados e consertados;       |
+   |                                                               |
+   |      - Foi abolida a chamada ao compilador via linha de       |
+   |        comando.                                               |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 2.0 (dezembro de 1999) ---------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - O programa responsável por interpretar as instruções   |
+   |        geradas pelo compilador foi embutido no mesmo          |
+   |        ambiente do compilador;                                |
+   |                                                               |
+   |      - O subconjunto da linguagem Pascal implementada no      |
+   |        compilador foi largamente expandida.                   |
+   |                                                               |
+   |      - Foi desenvolvido um ambiente de editoração visual      |
+   |        ( em ambiente Delphi ) capaz de se comunicar com       |
+   |        o compilador via linha de comando;                     |
+   |                                                               |
+   |      - Foi criado um arquivo de ajuda contendo a definição    |
+   |        sintática dos tipos, expressões, comandos e            |
+   |        estruturas da linguagem Pascal implementada pelo       |
+   |        compilador.                                            |
+   |                                                               |
+   |---------------------------------------------------------------|
+   |------VERSÂO 1.0 (dezembro de 1998) ---------------------------|
+   |---------------------------------------------------------------|
+   |                                                               |
+   |      - Foi implementada a primeira versão do compilador,      |
+   |        em linguagem C, consistindo de um programa capaz       |
+   |        de traduzir um programa fonte em um programa           |
+   |        objeto (compilador) e um programa capaz de             |
+   |        interpretar e executar programas objetos gerados       |
+   |        pelo compilador;                                       |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |    4.Subconjunto da linguagem Pascal implementado             |
+   #===============================================================#
+   |                                                               |
+   |      Na versão atual o compilador:                            |
+   |                                                               |
+   |      - Admite os tipos predefinidos integer, char, boolean,   |
+   |        real, string.                                          |
+   |                                                               |
+   |      - Permite a utilização dos tipos estruturados vetor      |
+   |        (array), registro (record), enumeração, conjunto (set) |
+   |         e ponteiro.                                           |
+   |                                                               |
+   |     - Permite o uso de arquivos no formato texto (text) e     |
+   |       binário (file of)                                       |
+   |                                                               |
+   |      - Admite constantes inteiras, reais, lógicas e literais. |
+   |                                                               |
+   |      - Reconhece os seguintes operadores:                     |
+   |                                                               |
+   |              - Aritméticos: +, - , *, /, DIV, MOD             |
+   |                                                               |
+   |              - Lógicos: NOT, AND, OR, XOR                     |
+   |                                                               |
+   |              - Condicionais: =, <>, >, >=, <, <=              |
+   |                                                               |
+   |              - Conjuntos: =, <>, +, -, *, <=, >=              |
+   |                                                               |
+   |                                                               |
+   |      - Reconhece os seguintes comandos:                       |
+   |                                                               |
+   |             - Comandos de atribuição                          |
+   |                                                               |
+   |             - Estruturas de repetição:                        |
+   |               for .. to, for .. downto, repeat, while         |
+   |                                                               |
+   |             - Estruturas condicionais:                        |
+   |               case, if .. then, if .. then .. else            |
+   |                                                               |
+   |             - Comandos para manipulação de arquivos:          |
+   |               append, close, open, reset, rewrite, seek,      |
+   |               filesize e filepos                              |
+   |                                                               |
+   |             - Comandos para manipulação de ponteiros:         |
+   |               dispose, new                                    |
+   |                                                               |
+   |             - Comandos para entrada e saída de dados:         |
+   |               read, readln, write, writeln                    | 
+   |                                                               |
+   |             - Outros:                                         |
+   |               break, clrscr, continue, cursoron, cursoroff,   |
+   |               dec, delay, delete, exit, gotoxy, inc, insert,  |
+   |               readkey, randomize, str, textcolor,             |
+   |               textbackground, val, with                       |
+   |                                                               |
+   |                                                               |
+   |     - Reconhece as funções abs, arctan, chr , concat, copy,   |
+   |       cos, eof , eoln, exp , frac, filesize, filepos, int,    |
+   |       ioresult, keypressed, length, ln, odd, ord, pos, pred,  |
+   |       random, readkey, round, seek, sin, sqr, sqrt, str, succ,|
+   |       trunc, upcase, wherex, wherey                           |
+   |                                                               |
+   |     - Reconhece as seguintes constantes pré-definidas:        |
+   |       maxint, pi                                              |
+   |                                                               |
+   |     - Permite a definição de funções e procedimentos,         |
+   |       suportando :                                            |
+   |                                                               |
+   |            - Recursividade                                    |
+   |            - Aninhamento                                      |
+   |            - Passagem de parâmetros por valor e referência    |
+   |                                                               |
+   |     - Permite o uso de unidades definidas pelo usuário (uses) |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |   5.Download                                                  | 
+   #===============================================================#
+   |                                                               |
+   |     Os arquivos necessários para a instalação do Pascalzim    |
+   |     podem ser obtidos a partir do seguinte endereço:          |
+   |                                                               |
+   |     http://pascalzimbr.blogspot.com.br                        | 
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |   6.Procedimento de instalação                                |
+   #===============================================================#
+   |                                                               |
+   |     Após copiar o arquivo Pzim.zip para o seu disco local     |
+   |     (download do arquivo) siga as seguintes instruções:       |
+   |                                                               |
+   |     - Utilize o Winzip (ou outro utilitário capaz de          |
+   |       descompactar arquivos zip) para descompactar o          |
+   |       arquivo obtido.                                         |
+   |                                                               |
+   |     - Execute o programa clicando em Pzim.exe                 |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |   7.Agradecimentos                                            |
+   #===============================================================#
+   |                                                               |
+   |     O desenvolvimento do Pascalzim contou com a               |
+   |     colaboração, ajuda e apoio de inúmeras pessoas:           |
+   |                                                               |
+   |     - Professor Pedro Rezende, do Departamento de             |
+   |       Ciências da Computação da Universidade de               |
+   |       Brasília, que foi meu orientador na disciplina          |
+   |       de Tradutores durante minha graduação, e com            |
+   |       quem aprendi conceitos fundamentais para                |
+   |       o desenvolvimento deste trabalho.                       |
+   |                                                               |
+   |     - Professora Maria Emília, do Departamento de             |
+   |       Ciências da Computação da Universidade de               |
+   |       Brasília, que foi minha orientadora no                  |
+   |       projeto final de graduação, e que acompanhou            |
+   |       todo o processo de implementação e revisão teórica      |
+   |       necessária para o desenvolvimento da versão 2.0 do      |
+   |       compilador.                                             |
+   |                                                               |
+   |     - Meus ex-alunos do curso de Introdução a Ciência         |
+   |       da Computação (turma L) na Universidade de              |
+   |       Brasília no primeiro semestre de 2000, que              |
+   |       utilizaram o compilador nesse período e que             |
+   |       contribuíram de maneira significativa para              |
+   |       detecção de erros e para o desenvolvimento do           |
+   |       compilador. Obrigado, meus primeiros beta-testers!      |
+   |                                                               |
+   |     - Professor Homero Picollo, do Departamento de            |
+   |       Ciências da Computação da Universidade de               |
+   |       Brasília, que contribuiu de forma considerável          |
+   |       para a descoberta de erros de implementação,            |
+   |       sugerindo também inúmeras sugestões.                    |
+   |                                                               |
+   |     - Todos os meus alunos do curso de Algoritmos e           |
+   |       Programação Estruturada, no Instituto de Educação       |
+   |       Superior de Brasília (IESB), e que utilizaram o         |
+   |       compilador durante o curso.                             |
+   |                                                               | 
+   |     - Andrei Prygounkov, autor da biblioteca de componentes   |
+   |       R&A Library, que contribuiu para o aprimoramento        |
+   |       significativo do editor na versão 4.0.                  |
+   |                                                               |
+   |     - Aos desenvolvedores do projeto SynEdit, pela ajuda e    |
+   |       prestatividade no esclarecimento de dúvidas para a      |
+   |       incorporação deste poderoso componente à versão 4.05.   |
+   |                                                               |
+   |     - Ao colega Alex Sandro Garzão, ex-aluno do curso         |
+   |       de Ciência da Computação na Unisinos, que               |
+   |       contribuiu com seu conhecimento e experiência           |
+   |       no desenvolvimento de novos módulos do Pascalzim        |
+   |       na versão 4.05. O suporte a ponteiros só foi possível   |
+   |       porque pude contar com sua importante ajuda e           |
+   |       dedicação.                                              |
+   |                                                               |
+   |     - Ao colega Guillherme Resende Sá, pela importante ajuda  |
+   |       com sugestões, testes e envio de belíssimos exemplos de |
+   |       jogos. Sua contribuição foi essencial para que o suporte|
+   |       à unidades fosse implementado na versão 5.2.4 do        |
+   |       compilador.                                             |
+   |                                                               |
+   |     - A todos os beta-testers, pela importante ajuda          |
+   |       na validação e teste das versões beta do compilador,    |
+   |       encontrando inúmeros bugs e contribuindo com preciosas  |
+   |       sugestões. Em especial, fica aqui registrado meu        |
+   |       agradecimento a Leonardo Pignataro e Rodrigo Gare       |
+   |       Pissarro, pelas importantes contribuições.              |
+   |                                                               |
+   |     - A todos os alunos e professores da Universidade         |
+   |       de Brasília, do IESB, e também a todas os professores,  |
+   |       alunos e pessoas que utilizaram (e estão utilizando :)  |
+   |       o compilador para fins educacionais e que, de           |
+   |       alguma forma, contribuiram para o desenvolvimento       |
+   |       desse trabalho.                                         |
+   |                                                               |
+   |      A todas essas pessoas gostaria de expressar aqui         |
+   |      minha eterna gratidão. Esse trabalho não seria           |
+   |      possível sem a significativa contribuição de             |
+   |      cada um de vocês.                                        |
+   |                                                               |
+   |      Muito obrigado!                                          |
+   |                                                               |
+   #===============================================================#
+
+
+   #===============================================================#
+   |    8.Comentários, críticas e sugestões                        |
+   #===============================================================#
+   |                                                               |   
+   |      Sua opinião é importante! Dúvidas, comentários,          |
+   |      sugestões e críticas são bem vindos!                     |
+   |                                                               |
+   |      Encontrou um bug? Por favor, não deixe de avisar!        |
+   |                                                               |
+   |      Envie um email para: pascalzim@yahoo.com.br              |
+   |                                                               |   
+   #===============================================================#
+   
+      
+   
+   
+   
+   

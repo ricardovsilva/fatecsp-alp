@@ -1,0 +1,75 @@
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞COMO JOGAR AQUI∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+
+ Ao iniciar a partida digite seu nome e escolha a quantidade de
+  jogadores.
+
+ Durante o jogo, para jogar ou comprar uma carta selecione a carta
+  ou o monte e pressione ENTER.
+
+ Para falar UNO pressione a tecla U quando for solicitado. 
+
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞REGRAS DO UNO∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞
+
+ Em cada oportunidade, o jogador pode jogar uma carta de sua m∆o que
+  seja igual a cor ou o n£mero da £ltima carta apresentada, ou ent∆o 
+  jogar um coringa ou coringa comprar quatro. Se a pessoa n∆o possuir 
+  carta para jogar na ocasi∆o, deve comprar. Caso ainda continue sem 
+  a carta necess†ria, perder† seu turno, repetindo o processo atÇ sair 
+  uma carta jog†vel.
+ 
+ Quando o jogador anterior joga uma carta '+2', poder† ser jogada 
+  mais uma carta '+2' imediatamente, acumulando-se para o jogador
+  seguinte. 
+ 
+ Antes de jogar a pen£ltima carta da m∆o, o jogador deve falar UNO! 
+  Caso isso n∆o ocorrer, o jogador ser† obrigado a comprar mais quatro 
+  cartas. A rodada termina quando um jogador estiver sem nenhuma carta 
+  na m∆o e a partida termina quando um jogador alcanáar ou ultrapassar 
+  o m†ximo de pontos.
+
+ Os pontos do vencedor da rodada s∆o computados somando-se os valores
+  referentes Ö cada carta da m∆o de todos os oponentes. Assim as 
+  cartas de 0 a 9 tem o valor de sua face. '+2', 'inverter' 
+  e 'pular' valem 20 pontos. 'Coringa' e 'coringa +4' valem 50 pontos. 
+
+Referància: http://pt.wikipedia.org/wiki/Uno_(jogo_de_cartas)
+
+_________________________________FIM__________________________________
+
+                                   ,_-=(!7(7/zs_. 
+                                .='  ' .`/,/!(=)Zm.
+                   .._,,._..  ,-`- `,\ ` -` -`\\7//WW.  
+              ,v=~/.-,-\- -!|V-s.)iT-|s|\-.'   `///mK%.
+            v!`i!-.e]-g`bT/i(/[=.Z/m)K(YNYi..   /-]i44M.
+          v`/,`|v]-DvLcfZ/eV/iDLN\D/ZK@%8W[Z..   `/d!Z8m
+        //,c\(2(X/NYNY8]ZZ/bZd\()/\7WY%WKKW)   -'|(][%4.
+      ,\\i\c(e)WX@WKKZKDKWMZ8(b5/ZK8]Z7%ffVM,   -.Y!bNMi
+      /-iit5N)KWG%%8%%%%W8%ZWM(8YZvD)XN(@.  [   \]!/GXW[ 
+     / ))G8\NMN%W%%%%%%%%%%8KK@WZKYK*ZG5KMi,-   vi[NZGM[
+    i\!(44Y8K%8%%%**~YZYZ@%%%%%4KWZ/PKN)ZDZ7   c=//WZK%!
+   ,\v\YtMZW8W%%f`,`.t/bNZZK%%W%%ZXb*K(K5DZ   -c\\/KM48
+   -|c5PbM4DDW%f  v./c\[tMY8W%PMW%D@KW)Gbf   -/(=ZZKM8[
+   2(N8YXWK85@K   -'c|K4/KKK%@  V%@@WD8e~  .//ct)8ZK%8`
+   =)b%]Nd)@KM[  !'\cG!iWYK%%|   !M@KZf    -c\))ZDKW%`
+   YYKWZGNM4/Pb  '-VscP4]b@W%     'Mf`   -L\///KM(%W!
+   !KKW4ZK/W7)Z. '/cttbY)DKW%     -`  .',\v)K(5KW%%f
+   'W)KWKZZg)Z2/,!/L(-DYYb54%  ,,`, -\-/v(((KK5WW%f
+    \M4NDDKZZ(e!/\7vNTtZd)8\Mi!\-,-/i-v((tKNGN%W%% 
+    'M8M88(Zd))///((|D\tDY\\KK-`/-i(=)KtNNN@W%%%@%[
+     !8%@KW5KKN4///s(\Pd!ROBY8/=2(/4ZdzKD%K%%%M8@%%
+      '%%%W%dGNtPK(c\/2\[Z(ttNYZ2NZW8W8K%%%%YKM%M%%.
+        *%%W%GW5@/%!e]_tZdY()v)ZXMZW%W%%%*5Y]K%ZK%8[
+         '*%%%%8%8WK\)[/ZmZ/Zi]!/M%%%%@f\ \Y/NNMK%%!
+           'VM%%%%W%WN5Z/Gt5/b)((cV@f`  - |cZbMKW%%|
+              'V*M%%%WZ/ZG\t5((+)L\'-,,/  -)X(NWW%%
+                   `~`MZ/DZGNZG5(((\,    ,t\\Z)KW%@
+                      'M8K%8GN8\5(5///]i!v\K)85W%%f
+                        YWWKKKKWZ8G54X/GGMeK@WM8%@
+                         !M8%8%48WG@KWYbW%WWW%%%@
+                           VM%WKWK%8K%%8WWWW%%%@`
+                             ~*%%%%%%W%%%%%%%@~
+                                ~*MM%%%%%%@f`
