@@ -1,7 +1,5 @@
 Program TestGenerator ;
 
-  Uses SysUtils;
-
   Type
       Product = Record
       Code : String[4];
@@ -14,6 +12,19 @@ Program TestGenerator ;
   
   Type
     SplitedText = array[1..255] of String[255];
+    
+  (*Converts string to real. This function was copied from 
+  http://professorwellingtontelles.blogspot.com.br/2011/06/converter-string-em-real-em-pascal.html
+  at 2014-10-07*)
+  function StrToReal (s: String): Real;  
+  var  
+    r : Real;  
+    p : Integer;  
+  begin  
+    Val (s,r,p);  
+    if p > 0 then Val (copy(s,1,p-1),r,p);  
+      StrToReal := r;  
+  end;
   
   (*Gets lines of products from file passed by parameter*) 
   function GetsProducts(filePath : String[255]) : Products;
@@ -32,7 +43,7 @@ Program TestGenerator ;
       
       returnProduct.Code := productInfo[codeIndex];
       returnProduct.Name := productInfo[nameIndex];
-      returnProduct.Price := StrToFloat(productInfo[priceIndex]);
+      returnProduct.Price := StrToReal(productInfo[priceIndex]);
       
       ParseProduct := returnProduct;
     End; 
@@ -78,19 +89,6 @@ Program TestGenerator ;
     end;
     
     StringIsEmpty := returnValue;
-  end;
-
-  (*Converts string to real. This function was copied from 
-  http://professorwellingtontelles.blogspot.com.br/2011/06/converter-string-em-real-em-pascal.html
-  at 2014-10-07*)
-  function StrToReal (s: String): Real;  
-  var  
-    r : Real;  
-    p : Integer;  
-  begin  
-    Val (s,r,p);  
-    if p > 0 then Val (copy(s,1,p-1),r,p);  
-      StrToReal := r;  
   end; 
 
 var
