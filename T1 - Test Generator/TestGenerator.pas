@@ -1,0 +1,4 @@
+Program TestGenerator ;
+Begin
+  
+End.
