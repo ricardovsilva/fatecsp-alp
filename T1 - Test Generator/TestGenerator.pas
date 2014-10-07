@@ -123,22 +123,30 @@ Program TestGenerator ;
     
     GetsProducts := productsVar;
   End;
+  
+  (*Prints all products of array*)
+  procedure PrintProducts(productsArray : Products);
+  var
+    i : integer;
+  begin
+    for i:= 1 to 15 do
+    begin
+      begin
+        Writeln('Code: ', productsArray[i].Code);
+        Writeln('Description: ', productsArray[i].Name);
+        WriteLn('Price: ', productsArray[i].Price:6:2);
+        WriteLn;
+      end
+    end
+  end;
 
 var
-  textSplited : SplitedText;
-  separatorChar : char;
-  target : Product;
-  originalText : String[255];
-Begin 
-  originalText := '1019;Lapiseira Pentel 0.5mm;15.20;';
-  separatorChar := ';';
+  filePath : String[255];
+  productsList : Products;
+  sellsQuantity : integer;
+Begin
+  filePath := 'Produtos.txt';
   
-  textSplited := Split(originalText, separatorChar);
-  target := ParseProduct(textSplited);
-  
-  WriteLn('Code: ', target.Code);
-  WriteLn('Description: ', target.Name);
-  WriteLn('Price: ', target.Price:6:2);
-  
-  Readln;
+  productsList := GetsProducts(filePath);   
+  //sellsQuantity := RequestQuantityOfSells():
 End.
