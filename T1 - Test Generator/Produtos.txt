@@ -1,11 +1,11 @@
-' Each line started with ' is a comment.
-' This file is a input file for first work of Algorithm and Programming Logic, of Analysis and Development System from FATEC-SP.
-' This file contains fifteen random products, generated with names in Brazilian Portuguese. Each product contains, separated by semicolon, the following
-' information:
-' - Product Code: Decimal integer with 4 numbers.
-' - Product Description: Description with max of 30 characters.
-' - Product Price: Real number with decimal point and two digits after dot.
-' PS: Blank lines will be ignored.
+# Each line started with # is a comment.
+# This file is a input file for first work of Algorithm and Programming Logic, of Analysis and Development System from FATEC-SP.
+# This file contains fifteen random products, generated with names in Brazilian Portuguese. Each product contains, separated by semicolon, the following
+# information:
+# - Product Code: Decimal integer with 4 numbers.
+# - Product Description: Description with max of 30 characters.
+# - Product Price: Real number with decimal point and two digits after dot.
+# PS: Blank lines will be ignored.
 
 0583;Borracha Faber Castel;4.82;
 

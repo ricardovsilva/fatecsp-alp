@@ -26,11 +26,6 @@ Program TestGenerator ;
       StrToReal := r;  
   end;
   
-  (*Gets lines of products from file passed by parameter*) 
-  function GetsProducts(filePath : String[255]) : Products;
-    Begin
-    End;
-  
   (*Parse array of strings into Product struct*)  
   function ParseProduct(productInfo : SplitedText) : Product;
     var
@@ -90,6 +85,44 @@ Program TestGenerator ;
     
     StringIsEmpty := returnValue;
   end; 
+  
+  function StringStartsWith(stringToVerify: string[255]; startChar : char) : boolean;
+  begin
+    StringStartsWith := stringToVerify[1] = startChar;
+  end;
+    
+  function LineIsValid(line : String[255]): boolean;
+  Begin
+    LineIsValid:= not StringIsEmpty(line) and not StringStartsWith(line, '#');
+  end;
+  
+  (*Gets lines of products from file passed by parameter*) 
+  function GetsProducts(filePath : String[255]) : Products;
+  var
+    productsVar : Products;
+    counter : integer;
+    line: string[255];
+    separator: char;
+    fileVar : Text;
+  Begin
+    counter := 1;
+    separator := ';';
+    
+    Assign(fileVar, filePath);
+    Reset(fileVar);
+   
+    while not EOF(fileVar) do
+    begin
+      Readln(fileVar, line);
+      if LineIsValid(line) then
+      begin
+        productsVar[counter] := ParseProduct(Split(line, separator));
+        counter := counter + 1;
+      end
+    end;
+    
+    GetsProducts := productsVar;
+  End;
 
 var
   textSplited : SplitedText;
@@ -103,9 +136,9 @@ Begin
   textSplited := Split(originalText, separatorChar);
   target := ParseProduct(textSplited);
   
-  WriteLn('Code: ' + textSplited.Code);
-  WriteLn('Description: ' + textSplited.Name);
-  WriteLn('Price: ' + textSplited.Price);
+  WriteLn('Code: ', target.Code);
+  WriteLn('Description: ', target.Name);
+  WriteLn('Price: ', target.Price:6:2);
   
   Readln;
 End.
