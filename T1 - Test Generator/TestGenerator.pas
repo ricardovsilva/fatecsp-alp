@@ -124,15 +124,28 @@ Program TestGenerator ;
     GetsProducts := productsVar;
   End;
   
-  function RequestQuantityOfSells() : integer;
+  (*Requests to user quantity of random sells that will be generated*)
+  function RequestQuantityOfSells : integer;
   var
     quantity : integer;
-  begin
+  Begin
     Write('Digite a quantidade de vendas a serem geradas aleatoriamente: ');
     Readln(quantity);
     
     RequestQuantityOfSells := quantity;
-  end
+  End;
+
+  (*Request the number of month to random generate sells*)
+  function RequestMonthNumber : integer;
+  var
+    monthNumber : integer;
+  begin
+    repeat
+      Write('Digite o mes as quais as vendas serao geradas: ');
+      Readln(monthNumber);
+      
+    until ((monthNumber > 1) and (monthNumber < 12)) or (monthNumber = 1) or (monthNumber = 12);
+  end;
   
   (*Prints all products of array*)
   procedure PrintProducts(productsArray : Products);
@@ -153,10 +166,13 @@ Program TestGenerator ;
 var
   filePath : String[255];
   productsList : Products;
-  sellsQuantity : integer;
+  sellsQuantity, monthNumber: integer;
 Begin
   filePath := 'Produtos.txt';
   
   productsList := GetsProducts(filePath);   
-  sellsQuantity := RequestQuantityOfSells():
+  sellsQuantity := RequestQuantityOfSells;
+  monthNumber := RequestMonthNumber;
+  
+  GenerateRandomCells(sellsQuantity, monthNumber, productsList);
 End.
