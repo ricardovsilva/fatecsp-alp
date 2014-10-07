@@ -61,5 +61,6 @@ Program TestGenerator ;
     StringIsEmpty := returnValue;
   end;
 
+var
 Begin 
 End.
