@@ -1,8 +1,9 @@
 unit DateTimeUtils;
 
 interface
-  function RequestMonthNumber(message : string) : integer;  
+  function IsMonth(number : integer) : boolean;
   function GenerateRandomDay (month : integer) : integer;
+  function RequestMonthNumber(message : string) : integer;  
 
 implementation
   const
@@ -18,7 +19,8 @@ implementation
     octDays = 31;
     novDays = 30;
     decDays = 31;
-    
+  
+  (*Verify if given number is month number*)  
   function IsMonth(number : integer) : boolean;
   begin
     IsMonth := ((number > 1) and (number < 12)) or (number = 1) or (number = 12);

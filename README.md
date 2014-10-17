@@ -23,9 +23,10 @@ Product and sells files are basically CSV (comma-separated value).
   * Total price
 
 ## Program Files
-* DateTimeUtils.pas - Contains functions to handle with time and gets random time information. They are:
-  * function RequestMonthNumber (message: string) : integer; - This function print message into console and returns one integer that represents one month. This integer can be only between 1 and 12, including 1 and 12. While user don't input a valid month number, this function stays in loop.
+* DateTimeUtils.pas - Contains functions to handle with time and gets random time information. They are:  
+  * function IsMonth(number : integer) : boolean; - This function verifies if number given is between 1 and 12, including 1 and 12.
   * function GenerateRandomDay (month : integer) : integer; - This function receives one month and gets one random day of given month.
+  * function RequestMonthNumber (message: string) : integer; - This function print message into console and returns one integer that represents one month. This integer can be only between 1 and 12, including 1 and 12. While user don't input a valid month number, this function stays in loop.
 
 * ProductUtils.pas - Contains struct of Product and all utilities functions to handle with products. They are:
   * function ParseProduct(productInfo : SplitedText) : Product; - This function receive of string and parse it into record of Product (code, description and price)
