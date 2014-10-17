@@ -84,8 +84,7 @@ implementation
   var
     daysInMonth : integer;
   begin
-    
-    daysInMonth :
+    daysInMonth := GetsQuantityOfDays(month, year);
     
     Randomize;
     GenerateRandomDay := Random(daysInMonth) + 1;
