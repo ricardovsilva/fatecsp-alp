@@ -1,6 +1,7 @@
 Program TestGenerator ;
   uses 
     DateTimeUtils,
+    ProductHandler,
     ProductUtils,
     SellUtils,
     StringUtils;
@@ -37,6 +38,7 @@ var
 Begin
   filePath := 'Produtos.txt';
   
+  ShowProductMenu;  
   productsList := GetsProducts(filePath);   
   sellsQuantity := RequestQuantityOfSells;
   monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');

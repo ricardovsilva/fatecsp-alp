@@ -30,6 +30,12 @@ Product and sells files are basically CSV (comma-separated value).
   * function GetsQuantityOfDays (month: integer; year: integer); - This function retrieves the quantity of days of given month of given year.
   * function RequestMonthNumber (message: string) : integer; - This function print message into console and returns one integer that represents one month. This integer can be only between 1 and 12, including 1 and 12. While user don't input a valid month number, this function stays in loop.
 
+* ProductHandler.pas - Contains user interface to handle with products. The following functions are inside this file:
+  * DisplaySelectedMenu - This procedure receives one number of menu and shows menu associated to given number.
+  * ShowConsultProduct - Shows menu to consult products (NOT IMPLEMENTED YET)
+  * ShowDeleteProduct - Shows menu to delete product (NOT IMPLEMENTED YET)
+  * ShowProductMenu - This is the main menu of product screen, it's shows to user options to consult, register, delete or come back to main menu.
+  * ShowRegisterProduct - Show menu to user register new product (NOT IMPLEMENTED YET)
 * ProductUtils.pas - Contains struct of Product and all utilities functions to handle with products. They are:
   * function ParseProduct(productInfo : SplitedText) : Product; - This function receive of string and parse it into record of Product (code, description and price)
   * function GetsProducts(filePath : String[255]) : Products; - This function gets all product lines from given file.
