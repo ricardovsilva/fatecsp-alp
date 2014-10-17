@@ -13,6 +13,7 @@ interface
     
   function ParseProduct(productInfo : SplitedText) : Product;
   function GetsProducts(filePath : String[255]) : Products;
+  function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
   
   procedure PrintProducts(productsArray : Products);
@@ -65,6 +66,23 @@ implementation
     Close(fileVar);
     GetsProducts := productsVar;
   End;
+  
+  (*Gets the length of products array*)
+  function LengthOfProducts(productArray : Products) : integer;
+  const
+    maxSize = 255;
+  var
+    counter : integer;
+  begin
+    counter := 0;
+    
+    while not StringIsEmpty(productArray[counter + 1].Code) do
+    begin
+      counter := counter + 1;
+    end;
+    
+    LengthOfProducts := counter;
+  end;
   
   (*Verify if line is not an comment*)
   function LineIsValid(line : String[255]): boolean;

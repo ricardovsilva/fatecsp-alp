@@ -39,9 +39,8 @@ Product and sells files are basically CSV (comma-separated value).
 * ProductUtils.pas - Contains struct of Product and all utilities functions to handle with products. They are:
   * function ParseProduct(productInfo : SplitedText) : Product; - This function receive of string and parse it into record of Product (code, description and price)
   * function GetsProducts(filePath : String[255]) : Products; - This function gets all product lines from given file.
-
   * function LineIsValid(line : String[255]): boolean; - Verify, accordinaly to Product File business rule, if a line is not comment.
-
+  * function LengthOfProducts(productArray : Products) : integer; - Count how much products really exists into product array.
   * procedure PrintProducts(productsArray : Products); - Receives an array of Products and print it all, exposing code, description and price.
 
 * StringUtils.pas - Contains functions to handle with strings. They are:
