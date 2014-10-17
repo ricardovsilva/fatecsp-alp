@@ -18,12 +18,14 @@ Program TestGenerator ;
   
   (*Generate sellsQuantity random sells into monthNumber month of year 2014*)
   function GenerateRandomSells(sellsQuantity, monthNumber : integer; productsList : products) : Sells;
+  const
+    year = 2014;
   var
     i, randomDay : integer;
   begin
     for i:= 0 to sellsQuantity do
     begin
-      Writeln(GenerateRandomDay(monthNumber));      
+      Writeln(GenerateRandomDay(monthNumber, year));      
     end; 
   end;
 

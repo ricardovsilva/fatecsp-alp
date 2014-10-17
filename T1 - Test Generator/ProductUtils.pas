@@ -62,6 +62,7 @@ implementation
       end
     end;
     
+    Close(fileVar);
     GetsProducts := productsVar;
   End;
   
