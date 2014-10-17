@@ -1,6 +1,7 @@
-unit Product;
+unit ProductUtils;
 
 interface
+  uses StringUtils;
   Type
       Product = Record
       Code : String[4];
@@ -8,7 +9,7 @@ interface
       Price : Real;
   End;
   Type
-    Products = array of Product;
+    Products = array[1..255] of Product;
     
   function ParseProduct(productInfo : SplitedText) : Product;
   function GetsProducts(filePath : String[255]) : Products;
@@ -17,6 +18,8 @@ interface
   procedure PrintProducts(productsArray : Products);
     
 implementation
+  uses StringUtils;
+
   (*Parse array of strings into Product struct*)  
   function ParseProduct(productInfo : SplitedText) : Product;
   var
@@ -83,3 +86,4 @@ implementation
       end
     end
   end;
+end.

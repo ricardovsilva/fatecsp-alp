@@ -1,5 +1,5 @@
 Program TestGenerator ;
-  uses StringUtils;
+  uses StringUtils, ProductUtils;
   
   Type
     Sell = Record
