@@ -13,6 +13,7 @@ interface
     
   function ParseProduct(productInfo : SplitedText) : Product;
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
+  function GetsProductByName(filePath : string; productName : string) : Product;
   function GetsProducts(filePath : String[255]) : Products;
   function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
@@ -111,6 +112,23 @@ implementation
         GetsProductByCode := productList[i];
       end;
     end;    
+  end;
+  
+  (*Returns product from file searching by description*)
+  function GetsProductByName(filePath : string; productName : string) : Product;
+  var
+    productList : Products;
+    i, productCount : integer;
+    currentProduct : Product;
+  begin
+    productList := GetsProducts(filePath);
+    productCount := LengthOfProducts(productList);
+    
+    for i := 1 to productCount do
+    begin
+      if productList[i].Name = productName then
+        GetsProductByName := productList[i];
+    end
   end;
   
   (*Print product passed by parameter*)

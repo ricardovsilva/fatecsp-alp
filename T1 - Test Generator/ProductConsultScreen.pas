@@ -26,13 +26,13 @@ implementation
       Writeln('Existem ', LengthOfProducts(productList), ' produtos cadastrados');
       Writeln('Como deseja consultar? ');
       Writeln('[1] Por código de produto');
-      Writeln('[2] Por nome');
+      Writeln('[2] Por descrição');
       Writeln('[3] Listar todos');
       Writeln('[4] Voltar ao menu anterior');
       Readln(option);
       
       DisplaySelectedProductConsultMenu(option, productFile);
-    until (option > 0) and (option < 5) and not (option = 4);
+    until option = 4;
   end;
   
   (*Shows menu selected by user*)
@@ -81,17 +81,44 @@ implementation
         Writeln('Produto não encontrado!');
       end;
       
-      Writeln('Pressione qualquer tecla para continuar');
+      Writeln('Pressione qualquer tecla para continuar...');
       Readkey;
   end;
   
   (*Display product by given name*)
   procedure DisplayByName(filePath : string);
+  var
+    productName : string[30];
+    currentProduct : Product;
   begin
+    Clrscr;
+    
+    Writeln('------P R O D U T O S------'); 
+    Writeln('------C O N S U L T A------');
+    Writeln('------P O R  N O M E-------');
+    Writeln('Por favor, digite o nome do produto: ');
+    Readln(productName);
+    
+    currentProduct := GetsProductByName(filePath, productName);
+    if not StringIsEmpty(currentProduct.Name) then
+      PrintProduct(currentProduct)
+    else
+      Writeln('Produto não encontrado!');
+      
+    Writeln('Pressione qualquer tecla para continuar...');
+    Readkey;    
   end;
 
   (*Display all products*)  
   procedure DisplayAll(filePath : string);
   begin
+    clrscr;
+    Writeln('------P R O D U T O S------'); 
+    Writeln('------C O N S U L T A------');
+    Writeln('---------T O D O S---------');
+    PrintProducts(GetsProducts(filePath));
+    
+    Writeln('Pressione qualquer tecla para continuar...');
+    Readkey;
   end;
 end.
