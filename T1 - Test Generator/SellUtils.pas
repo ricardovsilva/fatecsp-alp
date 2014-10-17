@@ -10,7 +10,7 @@ interface
   End;
   
   Type
-    Sells = array[1..65532] of Sell;
+    Sells = array[1..30000] of Sell;
 
 implementation
 
