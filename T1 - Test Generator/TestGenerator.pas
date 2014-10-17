@@ -1,5 +1,9 @@
 Program TestGenerator ;
-  uses StringUtils, ProductUtils, SellUtils;
+  uses 
+    DateTimeUtils,
+    ProductUtils,
+    SellUtils,
+    StringUtils;
   
   (*Requests to user quantity of random sells that will be generated*)
   function RequestQuantityOfSells : integer;
@@ -11,30 +15,6 @@ Program TestGenerator ;
     
     RequestQuantityOfSells := quantity;
   End;
-
-  (*Request the number of month to random generate sells*)
-  function RequestMonthNumber : integer;
-  var
-    monthNumber : integer;
-  begin
-    repeat
-      Write('Digite o mes as quais as vendas serao geradas: ');
-      Readln(monthNumber);
-      
-    until ((monthNumber > 1) and (monthNumber < 12)) or (monthNumber = 1) or (monthNumber = 12);
-  end;
-  
-  (*Generate random day of the month*)
-  function GenerateRandomDay (month : integer) : integer;
-  var
-    daysInMonth, year : integer;
-  begin
-    year := 2014;
-    daysInMonth := 30;
-    
-    Randomize;
-    GenerateRandomDay := Random(daysInMonth) + 1;
-  end;
   
   (*Generate sellsQuantity random sells into monthNumber month of year 2014*)
   function GenerateRandomSells(sellsQuantity, monthNumber : integer; productsList : products) : Sells;
@@ -57,7 +37,7 @@ Begin
   
   productsList := GetsProducts(filePath);   
   sellsQuantity := RequestQuantityOfSells;
-  monthNumber := RequestMonthNumber;
+  monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
   
   sellsVar := GenerateRandomSells(sellsQuantity, monthNumber, productsList);
   
