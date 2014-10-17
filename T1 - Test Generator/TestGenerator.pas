@@ -1,16 +1,5 @@
 Program TestGenerator ;
-  uses StringUtils, ProductUtils;
-  
-  Type
-    Sell = Record
-    Datetime : String[10];
-    ProductCode : String[4];
-    Quantity: integer;
-    Price: Real;
-  End;
-  
-  Type
-    Sells = array[1..65532] of Sell;
+  uses StringUtils, ProductUtils, SellUtils;
   
   (*Requests to user quantity of random sells that will be generated*)
   function RequestQuantityOfSells : integer;
