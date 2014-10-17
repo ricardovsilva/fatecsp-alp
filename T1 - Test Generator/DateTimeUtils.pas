@@ -5,6 +5,25 @@ interface
   function GenerateRandomDay (month : integer) : integer;
 
 implementation
+  const
+    janDays = 31;
+    febDays = 28;
+    marDays = 31;
+    aprDays = 30;
+    mayDays = 31;
+    junDays = 30;
+    julDays = 31;
+    augDays = 31;
+    sepDays = 30;
+    octDays = 31;
+    novDays = 30;
+    decDays = 31;
+    
+  function IsMonth(number : integer) : boolean;
+  begin
+    IsMonth := ((number > 1) and (number < 12)) or (number = 1) or (number = 12);
+  end;
+  
   (*Request the number of month*)
   function RequestMonthNumber(message : string) : integer;
   var
@@ -14,7 +33,7 @@ implementation
       Write(message);
       Readln(monthNumber);
       
-    until ((monthNumber > 1) and (monthNumber < 12)) or (monthNumber = 1) or (monthNumber = 12);
+    until IsMonth(monthNumber);
   end;
   
   (*Generate random day of the month*)
