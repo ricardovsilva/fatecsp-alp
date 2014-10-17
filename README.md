@@ -23,9 +23,11 @@ Product and sells files are basically CSV (comma-separated value).
   * Total price
 
 ## Program Files
-* DateTimeUtils.pas - Contains functions to handle with time and gets random time information. They are:  
+* DateTimeUtils.pas - Contains functions to handle with time and gets random time information. They are: 
+  * function IsLeapYear(year : integer) : boolean; - This function verifies if given year is a bissext year (or leap year).
   * function IsMonth(number : integer) : boolean; - This function verifies if number given is between 1 and 12, including 1 and 12.
   * function GenerateRandomDay (month : integer) : integer; - This function receives one month and gets one random day of given month.
+  * function GetsQuantityOfDays (month: integer; year: integer); - This function retrieves the quantity of days of given month of given year.
   * function RequestMonthNumber (message: string) : integer; - This function print message into console and returns one integer that represents one month. This integer can be only between 1 and 12, including 1 and 12. While user don't input a valid month number, this function stays in loop.
 
 * ProductUtils.pas - Contains struct of Product and all utilities functions to handle with products. They are:
