@@ -3,7 +3,7 @@ unit DateTimeUtils;
 interface
   function IsLeapYear(year : integer) : boolean;
   function IsMonth(number : integer) : boolean;
-  function GenerateRandomDay (month : integer) : integer;
+  function GenerateRandomDay (month : integer; year: integer) : integer;
   function GetsQuantityOfDays(month : integer; year : integer) : integer;
   function RequestMonthNumber(message : string) : integer;  
 
