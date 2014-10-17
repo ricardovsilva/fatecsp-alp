@@ -12,10 +12,12 @@ interface
     Products = array[1..255] of Product;
     
   function ParseProduct(productInfo : SplitedText) : Product;
+  function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProducts(filePath : String[255]) : Products;
   function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
   
+  procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
     
 implementation
@@ -89,7 +91,37 @@ implementation
   Begin
     LineIsValid:= not StringIsEmpty(line) and not StringStartsWith(line, '#');
   end;
-     
+  
+  (*Returns product from file searching by code*)
+  function GetsProductByCode(filePath : string; productCode : integer) : Product;
+  var
+    productList : Products;
+    i, productCount : integer;
+    currentProductCode, c : integer;
+  begin
+    productList := GetsProducts(filePath);
+    productCount := LengthOfProducts(productList);
+    
+    for i := 1 to productCount do
+    begin
+      Val(productList[i].Code, currentProductCode, c);
+      
+      if currentProductcode = productCode then
+      begin
+        GetsProductByCode := productList[i];
+      end;
+    end;    
+  end;
+  
+  (*Print product passed by parameter*)
+  procedure PrintProduct(productToPrint : Product);
+  begin
+    Writeln('Código: ', productToPrint.Code);
+    Writeln('Descrição: ', productToPrint.Name);
+    WriteLn('Preço: ', productToPrint.Price:6:2);
+    WriteLn;
+  end;
+  
   (*Prints all products of array*)
   procedure PrintProducts(productsArray : Products);
   var
@@ -98,10 +130,7 @@ implementation
     for i:= 1 to 15 do
     begin
       begin
-        Writeln('Code: ', productsArray[i].Code);
-        Writeln('Description: ', productsArray[i].Name);
-        WriteLn('Price: ', productsArray[i].Price:6:2);
-        WriteLn;
+        PrintProduct(productsArray[i]);
       end
     end
   end;

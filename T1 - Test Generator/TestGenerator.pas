@@ -38,7 +38,7 @@ var
 Begin
   filePath := 'Produtos.txt';
   
-  ShowProductMenu;  
+  ShowProductMenu(filePath);  
   productsList := GetsProducts(filePath);   
   sellsQuantity := RequestQuantityOfSells;
   monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
