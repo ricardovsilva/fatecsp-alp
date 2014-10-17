@@ -50,7 +50,7 @@ implementation
       
       days := months[month];
       
-      if IsLeapYear(year) and month = 2 then
+      if IsLeapYear(year) and (month = 2) then
         days := days + 1;
     end;
   end;
@@ -80,12 +80,12 @@ implementation
   end;
   
   (*Generate random day of the month*)
-  function GenerateRandomDay (month : integer) : integer;
+  function GenerateRandomDay (month : integer; year: integer) : integer;
   var
-    daysInMonth, year : integer;
+    daysInMonth : integer;
   begin
-    year := 2014;
-    daysInMonth := 30;
+    
+    daysInMonth :
     
     Randomize;
     GenerateRandomDay := Random(daysInMonth) + 1;
