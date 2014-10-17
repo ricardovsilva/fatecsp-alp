@@ -12,23 +12,23 @@ Two programs need to be created inside one, they will basically:
 ### Product and Sells Files
 Product and sells files are basically CSV (comma-separated value).
 * Product content
-** Product Code
-** Product Description
-** Product Price
+  * Product Code
+  * Product Description
+  * Product Price
 
 * Sell content
-** Product Code
-** Datetime of sell
-** Quantity
-** Total price
+  * Product Code
+  * Datetime of sell
+  * Quantity
+  * Total price
 
 ## Program Files
 * ProductUtils.pas - Contains struct of Product and all utilities functions to handle with products. They are:
-** function ParseProduct(productInfo : SplitedText) : Product; - This function receive of string and parse it into record of Product (code, description and price)
-** function GetsProducts(filePath : String[255]) : Products; - This function gets all product lines from given file.
+  * function ParseProduct(productInfo : SplitedText) : Product; - This function receive of string and parse it into record of Product (code, description and price)
+  * function GetsProducts(filePath : String[255]) : Products; - This function gets all product lines from given file.
 
-** function LineIsValid(line : String[255]): boolean; - Verify, accordinaly to Product File business rule, if a line is not comment.
+  * function LineIsValid(line : String[255]): boolean; - Verify, accordinaly to Product File business rule, if a line is not comment.
 
-** procedure PrintProducts(productsArray : Products); - Receives an array of Products and print it all, exposing code, description and price.
+  * procedure PrintProducts(productsArray : Products); - Receives an array of Products and print it all, exposing code, description and price.
 
 * TestGenerator.pas - This is the main file of project, it's executes all code to generate tests.
