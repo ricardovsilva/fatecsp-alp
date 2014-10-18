@@ -10,22 +10,55 @@ interface
   End;
   Type
     Products = array[1..255] of Product;
-    
-  function ParseProduct(productInfo : SplitedText) : Product;
+
+  function AddNewProduct(productFile : string ; newProduct : Product) : boolean;
+  function GetsProducts(filePath : String[255]) : Products;    
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProductByName(filePath : string; productName : string) : Product;
-  function GetsProducts(filePath : String[255]) : Products;
   function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
+  function ParseProduct(productInfo : SplitedText) : Product;
+  function ProductExists(productFile: string; productInfo : Product) : boolean;
   
   procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
     
 implementation
   uses StringUtils;
+  
+  (*Adds new product to file and returns a value indicating
+   * that product was successfully added.
+   * Parameters are:
+   *    newProduct - Product to add.
+   *    productFile - File to add product.
+   * Product will not added when other product with same code
+   * already exists into file. *)
+  function AddNewProduct(productFile : string; newProduct : Product) : boolean;
+  var
+  begin
+    if ProductExists(productFile, newProduct) then
+      AddNewProduct := false;
+    else
+    begin
+      
+  end;
 
+  (*Verifies if other product with same code already exists into file
+  * passed by parameter.
+  * Parameters are:
+  *    productFile - File to search by product.
+  *    productInfo - Product that will be searched.
+  * It returns a value indicating whether product exists into file. *)
+  function ProductExists(productFile: string; productInfo : Product) : boolean;
+  var
+    searchedProduct : Product;
+  begin
+    searchedProduct := GetsProductByCode(productFile, StrToInteger(productInfo.Code));
+    ProductExists := StringIsEmpty(searchedProduct);
+  end;
+  
   (*Parse array of strings into Product struct*)  
-  function ParseProduct(productInfo : SplitedText) : Product;
+  function ParseProduct(productFile: string ; productInfo : SplitedText) : Product;
   var
     returnProduct : Product;
     codeIndex, nameIndex, priceIndex : integer;
@@ -129,6 +162,15 @@ implementation
       if productList[i].Name = productName then
         GetsProductByName := productList[i];
     end
+  end;
+  
+  (*Receive product and returns string representation
+   *of product file. code;name;price *)
+  function ProductToString(productToParse : Product)
+  var
+    code : string[4];
+  begin
+       PadLeft(
   end;
   
   (*Print product passed by parameter*)

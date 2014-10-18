@@ -11,6 +11,18 @@ interface
   function StrToReal (s: String): Real;
 
 implementation 
+
+  (*Adds pad to left of string *)
+  function AddPadLeft(textToPad : string[255]; padChar : char; totalLength : integer) : string;
+  var
+    i : integer;
+  begin
+    for i := Length(textToPad) to totalLength do
+    begin
+      textToPad := padChar + textToPad;
+    end; 
+  end;
+  
   (*Split text passed by parameter using separator char to do split.*)
   function Split(textToSplit : String[255]; separatorChar : char) : SplitedText;
   var
