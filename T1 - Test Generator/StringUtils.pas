@@ -3,7 +3,8 @@ unit StringUtils;
 interface 
   Type
     SplitedText = array[1..255] of String[255];
-  
+
+  function AddPadLeft(textToPad : string[255]; padChar : string[1]; totalLength : integer) : string;  
   function Split(textToSplit : String[255]; separatorChar : char) : SplitedText;
   function StringIsEmpty(textToVerify : String[255]) : boolean;
   function StringStartsWith(stringToVerify: string[255]; startChar : char) : boolean;
@@ -13,7 +14,7 @@ interface
 implementation 
 
   (*Adds pad to left of string *)
-  function AddPadLeft(textToPad : string[255]; padChar : char; totalLength : integer) : string;
+  function AddPadLeft(textToPad : string[255]; padChar : string[1]; totalLength : integer) : string;
   var
     i : integer;
   begin

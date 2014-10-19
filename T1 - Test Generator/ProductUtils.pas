@@ -11,7 +11,7 @@ interface
   Type
     Products = array[1..255] of Product;
 
-  function AddNewProduct(productFile : string ; newProduct : Product) : boolean;
+  function AddNewProduct(filePath : string; newProduct : Product) : boolean;
   function GetsProducts(filePath : String[255]) : Products;    
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProductByName(filePath : string; productName : string) : Product;
@@ -19,28 +19,40 @@ interface
   function LineIsValid(line : String[255]): boolean;
   function ParseProduct(productInfo : SplitedText) : Product;
   function ProductExists(productFile: string; productInfo : Product) : boolean;
+  function ProductToString(productToParse : Product) : string;
   
   procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
     
 implementation
-  uses StringUtils;
+  uses 
+    StringUtils,
+    RealUtils;
   
   (*Adds new product to file and returns a value indicating
    * that product was successfully added.
    * Parameters are:
    *    newProduct - Product to add.
-   *    productFile - File to add product.
+   *    filePath - Path of file to add product.
    * Product will not added when other product with same code
    * already exists into file. *)
-  function AddNewProduct(productFile : string; newProduct : Product) : boolean;
+  function AddNewProduct(filePath : string; newProduct : Product) : boolean;
   var
+    productFile : Text;
   begin
-    if ProductExists(productFile, newProduct) then
+    if ProductExists(filePath, newProduct) then
+    begin
       AddNewProduct := false;
+    end
+    
     else
     begin
-      
+      Assign(productFile, filePath);
+      Append(productFile);
+      Writeln(productFile, ProductToString(newProduct));
+      Close(productFile);
+      AddNewProduct := true;
+    end;
   end;
 
   (*Verifies if other product with same code already exists into file
@@ -54,11 +66,11 @@ implementation
     searchedProduct : Product;
   begin
     searchedProduct := GetsProductByCode(productFile, StrToInteger(productInfo.Code));
-    ProductExists := StringIsEmpty(searchedProduct);
+    ProductExists := not StringIsEmpty(searchedProduct.Code);
   end;
   
   (*Parse array of strings into Product struct*)  
-  function ParseProduct(productFile: string ; productInfo : SplitedText) : Product;
+  function ParseProduct(productInfo : SplitedText) : Product;
   var
     returnProduct : Product;
     codeIndex, nameIndex, priceIndex : integer;
@@ -166,11 +178,21 @@ implementation
   
   (*Receive product and returns string representation
    *of product file. code;name;price *)
-  function ProductToString(productToParse : Product)
+  function ProductToString(productToParse : Product) : string;
+  const
+    codeLength = 4;
+    decimalLength = 2;
   var
-    code : string[4];
-  begin
-       PadLeft(
+    returnText : string[255];
+    price : string[10];
+  begin 
+    price := RealToStr(productToParse.Price, decimalLength);
+  
+    returnText := productToParse.Code + ';';
+    returnText := returnText + productToParse.Name + ';';
+    returnText := returnText + price;
+    
+    ProductToString := returnText;
   end;
   
   (*Print product passed by parameter*)

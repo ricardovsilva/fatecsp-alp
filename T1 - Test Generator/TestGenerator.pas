@@ -4,7 +4,8 @@ Program TestGenerator ;
     ProductHandler,
     ProductUtils,
     SellUtils,
-    StringUtils;
+    StringUtils,
+    Realutils;
   
   (*Requests to user quantity of random sells that will be generated*)
   function RequestQuantityOfSells : integer;
@@ -30,7 +31,12 @@ Program TestGenerator ;
     end; 
   end;
 
+const
+  testMode = false;
 var
+  r : real;
+  s : string[20];
+  
   sellsVar : Sells;
   filePath : String[20];
   productsList : Products;
@@ -38,12 +44,23 @@ var
 Begin
   filePath := 'Produtos.txt';
   
-  ShowProductMenu(filePath);  
-  productsList := GetsProducts(filePath);   
-  sellsQuantity := RequestQuantityOfSells;
-  monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
+  if not testMode then
+  begin
+    ShowProductMenu(filePath);  
+    productsList := GetsProducts(filePath);   
+    sellsQuantity := RequestQuantityOfSells;
+    monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
+    
+    sellsVar := GenerateRandomSells(sellsQuantity, monthNumber, productsList);
+  end
   
-  sellsVar := GenerateRandomSells(sellsQuantity, monthNumber, productsList);
-  
+  else
+  begin
+    r := 1234.50;
+     
+  end;
+    s:= RealToStr(r, 2);
+    Writeln(s);
+    Readkey;
   Readln;
 End.

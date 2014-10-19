@@ -1,6 +1,6 @@
 unit RealUtils;
 interface
-  function RealStr ( r : Real ; d : Integer) : String;  
+  function RealToStr ( r : Real ; d : Integer) : String;
 implementation
   
   (*This function converts real variable to it's string
@@ -10,7 +10,7 @@ implementation
    *  d : Integer - Length of number after decimal point.
    * This code was copied from http://professorwellingtontelles.blogspot.com.br/2014/07/converte-real-para-string-no-pascalzim.html
    * at 2014-10-19, and written by Professor Wellington Telles *)    
-  function RealStr ( r : Real ; d : Integer) : String;
+  function RealToStr ( r : Real ; d : Integer) : String;
   Var
     i,j : Integer ;
     aux : String ;
@@ -20,7 +20,7 @@ implementation
     i := trunc (r) ;
     str (i,s) ;
     r := r - i ; // Remove a parte inteira
-    s := s + ' .' ; // Ponto da casa decimal
+    s := s + '.' ; // Ponto da casa decimal
     // Casas Decimais
     j := 0 ;
     While r < 1 Do
@@ -33,6 +33,6 @@ implementation
       j := j + 1 ;
       if j = d Then break ; // Sai do Looping
     End ;   
-    RealStr := s 
+    RealToStr := s 
   end;
 end.

@@ -4,12 +4,12 @@ interface
   procedure DisplaySelectedProductMenu(option : integer; productFile : string);
   procedure ShowDeleteProduct;
   procedure ShowProductMenu(productFile : string);
-  procedure ShowRegisterProduct;
   
 implementation
   uses 
     ProductUtils,
-    ProductConsultScreen;
+    ProductConsultScreen,
+    ProductRegisterScreen;
 
   (*Show Main Menu of product functions.*)
   procedure ShowProductMenu(productFile : string);
@@ -53,24 +53,18 @@ implementation
   begin
     if option = consult then
     begin
-      ShowConsultProduct(productFile)
+      ShowConsultProduct(productFile);
     end
     
     else if option = register then
     begin
-      ShowRegisterProduct
+      ShowProductRegisterScreen(productFile);
     end
     
     else if option = deleteProduct then
     begin
       ShowDeleteProduct
     end;
-  end;
-  
-  (*Shows menu to register new product*)
-  procedure ShowRegisterProduct;
-  begin
-    Writeln(' ');
   end;
   
   (*Shows menu to delete product*)
