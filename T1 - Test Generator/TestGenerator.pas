@@ -32,7 +32,7 @@ Program TestGenerator ;
   end;
 
 const
-  testMode = false;
+  testMode = true;
 var
   r : real;
   s : string[20];
@@ -43,24 +43,11 @@ var
   sellsQuantity, monthNumber : integer;
 Begin
   filePath := 'Produtos.txt';
-  
-  if not testMode then
-  begin
-    ShowProductMenu(filePath);  
-    productsList := GetsProducts(filePath);   
-    sellsQuantity := RequestQuantityOfSells;
-    monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
-    
-    sellsVar := GenerateRandomSells(sellsQuantity, monthNumber, productsList);
-  end
-  
-  else
-  begin
-    r := 1234.50;
-     
-  end;
-    s:= RealToStr(r, 2);
-    Writeln(s);
-    Readkey;
-  Readln;
+
+  ShowProductMenu(filePath);  
+  productsList := GetsProducts(filePath);   
+  sellsQuantity := RequestQuantityOfSells;
+  monthNumber := RequestMonthNumber('Digite o mês para gerar as vendas');
+
+  sellsVar := GenerateRandomSells(sellsQuantity, monthNumber, productsList);
 End.

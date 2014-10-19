@@ -54,6 +54,35 @@ implementation
       AddNewProduct := true;
     end;
   end;
+  
+  function DeleteProduct(filePath : string; newProduct : Product) : boolean;
+  var
+    productFile : Text;
+    lineNumber : integer;
+    currentLine : string[255];
+  begin
+    if ProductExists(filePath, newProduct) then
+    begin
+      DeleteProduct := false;
+    end
+    
+    else
+    begin
+      Assign(productFile, filePath);
+      Reset(productFile);
+      lineNumber := 0;
+      
+      while not (EOF(productFile)) and not (StringStartsWith(currentLine, newProduct.Code)) do
+      begin
+        Readln(productFile, newProduct.Code);
+        lineNumber := lineNumber + 1;
+      end;
+      
+      Writeln(productFile, '');      
+      Close(productFile);
+    end;
+  end;
+      
 
   (*Verifies if other product with same code already exists into file
   * passed by parameter.

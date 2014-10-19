@@ -7,7 +7,7 @@ interface
   function AddPadLeft(textToPad : string[255]; padChar : string[1]; totalLength : integer) : string;  
   function Split(textToSplit : String[255]; separatorChar : char) : SplitedText;
   function StringIsEmpty(textToVerify : String[255]) : boolean;
-  function StringStartsWith(stringToVerify: string[255]; startChar : char) : boolean;
+  function StringStartsWith(stringToVerify: string[255]; startString : string[255]) : boolean;
   function StrToInteger (s: String) : integer;
   function StrToReal (s: String): Real;
 
@@ -66,11 +66,20 @@ implementation
     
     StringIsEmpty := returnValue;
   end; 
-  
+    
   (*Verify if string starts with given char*)
-  function StringStartsWith(stringToVerify: string[255]; startChar : char) : boolean;
+  function StringStartsWith(stringToVerify: string[255]; startString : string[255]) : boolean;
+  var
+    equals : boolean;
+    i : integer;
   begin
-    StringStartsWith := stringToVerify[1] = startChar;
+    equals := true;
+    for i:= 1 to length(startString) do
+    begin      
+      equals := equals and (startString[i] = stringToVerify[i]);
+    end;
+    
+    StringStartsWith := equals;
   end;
   
   (*Converts string to real. This function was copied from 
