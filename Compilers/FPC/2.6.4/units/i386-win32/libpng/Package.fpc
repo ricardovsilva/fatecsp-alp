@@ -1,7 +1,0 @@
-[package]
-name=libpng
-version=2.6.4
-[require]
-packages=rtl zlib
-libc=y
-packages_win32_i386=

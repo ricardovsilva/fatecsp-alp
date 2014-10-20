@@ -1,7 +1,0 @@
-[package]
-name=httpd24
-version=2.6.4
-[require]
-libc=y
-packages=rtl 
-packages_win32_i386=
