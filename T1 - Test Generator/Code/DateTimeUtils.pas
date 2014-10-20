@@ -4,10 +4,13 @@ interface
   function IsLeapYear(year : integer) : boolean;
   function IsMonth(number : integer) : boolean;
   function GenerateRandomDay (month : integer; year: integer) : integer;
+  function GetsDateTime(year : integer; month : integer; day : integer) : string;
   function GetsQuantityOfDays(month : integer; year : integer) : integer;
   function RequestMonthNumber(message : string) : integer;  
 
 implementation
+  uses
+    StringUtils;
   const
     janDays = 31;
     febDays = 28;
@@ -53,6 +56,8 @@ implementation
       if IsLeapYear(year) and (month = 2) then
         days := days + 1;
     end;
+    
+    GetsQuantityOfDays := days;
   end;
   
   (*Verify if given year is leap year*)
@@ -88,5 +93,20 @@ implementation
     
     Randomize;
     GenerateRandomDay := Random(daysInMonth) + 1;
+  end;
+  
+  (*Receives year, month and day and returns string formated yyyy-mm-dd*)
+  function GetsDateTime(year : integer; month : integer; day : integer) : string;
+  var
+    y, m, d : string;
+  begin
+    str(year, y);
+    str(month, m);
+    str(day, d);
+   
+    m:= AddPadLeft(m, '0', 2);
+    d:= AddPadLeft(d, '0', 2);
+    
+    GetsDateTime := concat(y,'-',m,'-',d);
   end;
 end.

@@ -70,6 +70,8 @@ implementation
   (*Shows menu to delete product*)
   procedure ShowDeleteProduct;
   begin
-    Writeln(' ');
+    Writeln('Esta função não foi implementada ainda. Aguarde versões futuras.');
+    Writeln('Pressione qualquer tecla para continuar...');
+    Readkey;
   end;
 end.

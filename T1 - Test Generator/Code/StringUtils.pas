@@ -18,10 +18,12 @@ implementation
   var
     i : integer;
   begin
-    for i := Length(textToPad) to totalLength do
+    for i := Length(textToPad) to totalLength - 1 do
     begin
-      textToPad := padChar + textToPad;
+      textToPad := concat(padChar, textToPad);
     end; 
+    
+    AddPadLeft := textToPad;
   end;
   
   (*Split text passed by parameter using separator char to do split.*)

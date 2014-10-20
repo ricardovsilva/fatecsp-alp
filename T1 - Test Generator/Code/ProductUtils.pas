@@ -3,18 +3,20 @@ unit ProductUtils;
 interface
   uses StringUtils;
   Type
-      Product = Record
-      Code : String[4];
-      Name : String[30];
-      Price : Real;
+    Product = Record
+    Code : String[4];
+    Name : String[30];
+    Price : Real;
   End;
   Type
     Products = array[1..255] of Product;
 
   function AddNewProduct(filePath : string; newProduct : Product) : boolean;
+  function DeleteProduct(filePath : string; newProduct : Product) : boolean;
   function GetsProducts(filePath : String[255]) : Products;    
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProductByName(filePath : string; productName : string) : Product;
+  function GetsRandomProduct(filePath: string) : Product;
   function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
   function ParseProduct(productInfo : SplitedText) : Product;
@@ -55,13 +57,14 @@ implementation
     end;
   end;
   
+  (*Delete given product from file. This function doesn't work yet.*)
   function DeleteProduct(filePath : string; newProduct : Product) : boolean;
   var
-    productFile : Text;
-    lineNumber : integer;
+    productFile : File of string;
+    lineNumber, counter : integer;
     currentLine : string[255];
   begin
-    if ProductExists(filePath, newProduct) then
+    if not ProductExists(filePath, newProduct) then
     begin
       DeleteProduct := false;
     end
@@ -74,11 +77,14 @@ implementation
       
       while not (EOF(productFile)) and not (StringStartsWith(currentLine, newProduct.Code)) do
       begin
-        Readln(productFile, newProduct.Code);
+        Readln(productFile, currentLine);
         lineNumber := lineNumber + 1;
-      end;
+      end;           
+
+      Seek(productFile, lineNumber - 1);
+      //truncate(productFile);
+
       
-      Writeln(productFile, '');      
       Close(productFile);
     end;
   end;
@@ -143,6 +149,21 @@ implementation
     Close(fileVar);
     GetsProducts := productsVar;
   End;
+  
+  (*Retrieves random product from given file*)
+  function GetsRandomProduct(filePath: string) : Product;
+  var
+    productList : Products;
+    quantity : integer;
+    index : integer;
+  begin
+    productList := GetsProducts(filePath);
+    quantity := LengthOfProducts(productList);
+    Randomize;
+    index := Random(quantity) + 1;
+    
+    GetsRandomProduct := productList[index];
+  end;
   
   (*Gets the length of products array*)
   function LengthOfProducts(productArray : Products) : integer;
