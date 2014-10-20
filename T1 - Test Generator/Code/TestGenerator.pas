@@ -1,10 +1,8 @@
 Program TestGenerator ;
   uses 
-    (*
     ProductHandler,
     StringUtils,
     Realutils,
-    *)
     RandomUtils,
     DateTimeUtils,
     ProductUtils,

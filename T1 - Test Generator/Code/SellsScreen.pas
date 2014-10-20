@@ -68,7 +68,7 @@ implementation
     Write('Digite a porcentagem de variação dos preços (em inteiro): ');
     Readln(percentage);
     
-    //GenerateRandomSells(sellsFile, productsFile, year, month, quantity, percentage);
+    GenerateRandomSells(sellsFile, productsFile, year, month, quantity, percentage);
     
     Writeln(quantity, ' vendas geradas com sucesso!');
     Writeln('Pressione qualquer tecla para voltar ao menu anterior...');

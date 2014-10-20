@@ -82,9 +82,6 @@ implementation
       end;           
 
       Seek(productFile, lineNumber - 1);
-      //truncate(productFile);
-
-      
       Close(productFile);
     end;
   end;
