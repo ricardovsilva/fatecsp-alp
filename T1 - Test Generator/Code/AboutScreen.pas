@@ -5,6 +5,7 @@ implementation
   
   procedure ShowAboutMenu;
   begin
+	Clrscr;
     Writeln('----------------------------S O B R E----------------------------');
     Writeln('Este programa foi escrito por Ricardo da Verdade Silva, ');
     Writeln('aluno da FATEC São Paulo do curso Análise e Desenvolvimento');

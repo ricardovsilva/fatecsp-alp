@@ -21,4 +21,7 @@
 4814;Prancheta Des. Tec. Trident;43.72;
 6415;Folhas Com Margem;0.25;
 6723;Folha Comum;0.10;
-8383;Mesa Para Des. Tec.;182.45;1234;Caneta Esfereografica Pentel;82.54
+8383;Mesa Para Des. Tec.;182.45;
+
+8315;Bla bla;250.00;
+8909;Teste;25.30;

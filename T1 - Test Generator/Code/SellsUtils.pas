@@ -15,7 +15,6 @@ interface
   function SellToString(sellToParse : Sell) : string;
     
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
-  Procedure WriteSellOnFile(sellsPath : string; sellToWrite : Sell);
   
 implementation
   uses
@@ -39,16 +38,19 @@ implementation
     currentSell : sell;
     i : integer;
     randomProduct : Product;
+    productArray : Products;
   begin
     Assign(sellsFile, sellsPath);
     Append(sellsFile);
+    
+    productArray := GetsProducts(productsPath);
     
     for i := 1 to quantity do
     begin
        day := GenerateRandomDay(month, year);
        currentSell.Datetime := GetsDateTime(year, month, day);
        
-       currentSell.Product := GetsRandomProduct(productsPath);
+       currentSell.Product := GetsRandomProduct(productsPath, productArray);
        
        currentSell.Product.Price := AddRandomPercentage(currentSell.Product.Price, pricePercentage);
        
@@ -56,8 +58,10 @@ implementation
        currentSell.Quantity := Random(100) + 1;
        currentSell.Price := currentSell.Product.Price * currentSell.Quantity;
        
-       WriteSellOnFile(sellsPath, currentSell);
-    end
+       Writeln(sellsFile, SellToString(currentSell));
+    end;
+    
+    Close(sellsFile);
   end;   
   
   (*Receives one sell and returns it csv formated.
@@ -72,23 +76,11 @@ implementation
   begin
     str(sellToParse.Quantity, quantity);
   
-    sellString := sellToParse.Product.Code + ';';
-    sellString := sellString + sellToParse.Datetime + ';';
-    sellString := sellString + quantity + ';';
-    sellString := sellString + RealToStr(sellToParse.Price, decimalLength);
+    sellString := concat(sellToParse.Product.Code,';');
+    sellString := concat(sellString,sellToParse.Datetime,';');
+    sellString := concat(sellString,quantity,';');
+    sellString := concat(sellString,RealToStr(sellToParse.Price, decimalLength));
     
     SellToString := sellString;
-  end;
-    
-  (*This procedure append sell on file*)
-  Procedure WriteSellOnFile(sellsPath : string; sellToWrite : Sell);
-  var
-    sellsFile : Text;
-  begin
-    Assign(sellsFile, sellsPath);
-    Append(sellsFile);
-    
-    Writeln(sellsFile, SellToString(sellToWrite));
-    Close(sellsFile);
   end;
 end.

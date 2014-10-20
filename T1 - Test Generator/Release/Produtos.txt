@@ -22,3 +22,5 @@
 6415;Folhas Com Margem;0.25;
 6723;Folha Comum;0.10;
 8383;Mesa Para Des. Tec.;182.45;1234;Caneta Esfereografica Pentel;82.54
+8974;Mesa de Des. Tec. Azul;200.25
+4917;Teste;55.21

@@ -16,7 +16,7 @@ interface
   function GetsProducts(filePath : String[255]) : Products;    
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProductByName(filePath : string; productName : string) : Product;
-  function GetsRandomProduct(filePath: string) : Product;
+  function GetsRandomProduct(filePath: string ; productArray : Products) : Product;
   function LengthOfProducts(productArray : Products) : integer;
   function LineIsValid(line : String[255]): boolean;
   function ParseProduct(productInfo : SplitedText) : Product;
@@ -140,21 +140,21 @@ implementation
       begin
         productsVar[counter] := ParseProduct(Split(line, separator));
         counter := counter + 1;
-      end
+      end;
+
     end;
-    
     Close(fileVar);
     GetsProducts := productsVar;
   End;
   
   (*Retrieves random product from given file*)
-  function GetsRandomProduct(filePath: string) : Product;
+  function GetsRandomProduct(filePath: string; productArray : Products) : Product;
   var
     productList : Products;
     quantity : integer;
     index : integer;
   begin
-    productList := GetsProducts(filePath);
+    productList := productArray;
     quantity := LengthOfProducts(productList);
     Randomize;
     index := Random(quantity) + 1;
@@ -237,7 +237,7 @@ implementation
   
     returnText := productToParse.Code + ';';
     returnText := returnText + productToParse.Name + ';';
-    returnText := returnText + price;
+    returnText := returnText + price + ';';
     
     ProductToString := returnText;
   end;
@@ -256,7 +256,7 @@ implementation
   var
     i : integer;
   begin
-    for i:= 1 to 15 do
+    for i:= 1 to LengthOfProducts(productsArray) do
     begin
       begin
         PrintProduct(productsArray[i]);

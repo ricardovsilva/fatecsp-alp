@@ -62,7 +62,7 @@ implementation
     Write('Digite o mês ao qual as vendas serão geradas: ');
     Readln(month);
     
-    Write('Digite a quantidade de vendas aleatórias a serem geradas (máx 20k): ');
+    Write('Digite a quantidade de vendas aleatórias a serem geradas: ');
     Readln(quantity);
     
     Write('Digite a porcentagem de variação dos preços (em inteiro): ');
