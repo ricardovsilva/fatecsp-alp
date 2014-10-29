@@ -93,10 +93,10 @@ implementation
     toInt: Array [0..3]of integer;
   begin
     sum := 0;
-    toInt[0] := StrToInteger(sellCode[0])*5;
-    toInt[1] := StrToInteger(sellCode[1])*4;
-    toInt[2] := StrToInteger(sellCode[2])*3;
-    toInt[3] := StrToInteger(sellCode[3])*2;
+    toInt[0] := StrToInteger(sellCode[1])*5;
+    toInt[1] := StrToInteger(sellCode[2])*4;
+    toInt[2] := StrToInteger(sellCode[3])*3;
+    toInt[3] := StrToInteger(sellCode[4])*2;
     for i:= 0 to 3 do
       sum := sum + toInt[i];
     sum := sum mod 7;
