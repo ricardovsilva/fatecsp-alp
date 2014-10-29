@@ -13,6 +13,7 @@ interface
   End;
   
   function SellToString(sellToParse : Sell) : string;
+  function CalculateVerifierDigit(sellCode : string[4]):string;
     
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
   
@@ -83,4 +84,23 @@ implementation
     
     SellToString := sellString;
   end;
+
+  function CalculateVerifierDigit(sellCode : string[4]):string;
+    var 
+    calc : string;
+    i, sum: integer;
+    toInt: Array [0..3]of integer;
+  begin
+    sum := 0;
+    toInt[0] := Integer (sellCode[0])*5;
+    toInt[1] := Integer (sellCode[1])*4;
+    toInt[2] := Integer (sellCode[2])*3;
+    toInt[3] := Integer (sellCode[3])*2;
+    for i:= 0 to 3 do
+      sum := sum + toInt[i];
+    sum := sum mod 7;
+  calc := Str (sum);
+  CalculateVerifierDigit := calc;
+  end;
+
 end.
