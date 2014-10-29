@@ -85,6 +85,7 @@ implementation
     SellToString := sellString;
   end;
 
+  (*Receives one sell code, calculates and returns the verifier digit.*)
   function CalculateVerifierDigit(sellCode : string[4]):string;
     var 
     calc : string;
