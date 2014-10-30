@@ -67,7 +67,7 @@ implementation
   
   (*Receives one sell and returns it csv formated.
    * The format will be:
-   * productCode;dateTime;quantity;TotalPrice;verifierDigit*)
+   * productCode-verifierDigit;dateTime;quantity;TotalPrice*)
   function SellToString(sellToParse : Sell) : string;
   const
     decimalLength = 2;
@@ -77,12 +77,11 @@ implementation
   begin
     str(sellToParse.Quantity, quantity);
   
-    sellString := concat(sellToParse.Product.Code,';');
+    sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code,';');
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
     sellString := concat(sellString,RealToStr(sellToParse.Price, decimalLength));
-    sellString := concat(sellString,CalculateVerifierDIgit(sellToParse.Product.Code));
-    
+
     SellToString := sellString;
   end;
 
