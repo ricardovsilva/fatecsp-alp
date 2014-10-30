@@ -2,10 +2,11 @@ unit ProductRegisterScreen;
 interface
 
   procedure ShowProductRegisterScreen(productFile : string);
-  function GetsProductCode(message : string; min, max : integer) : string;
   
 implementation
-  uses ProductUtils;
+  uses 
+    ProductUtils,
+    InputUtils;
 
   (*Shows screen to register new product*)  
   procedure ShowProductRegisterScreen(productFile: string);
@@ -17,7 +18,7 @@ implementation
     Writeln('------P R O D U T O S------');  
     Writeln('------R E G I S T R O------');
     
-    newProduct.Code := GetsProductCode('Por favor, digite o código do produto (entre 1100 e 1199): ', 1100, 1199);
+    newProduct.Code := GetsIntegerAsString('Por favor, digite o código do produto (entre 1100 e 1199): ', 1100, 1199);
     
     Writeln('Digite o nome do produto (maximo de 30 caracters): ');
     Readln(newProduct.Name);
@@ -40,27 +41,4 @@ implementation
     Writeln('Pressione qualquer tecla para continuar...');
     Readkey;
   end;
-  
-  (* This function asks user to input product code. And only returns the product code when it was between
-   * min and max. Parameters are: * 
-   * message - Is the message that will be displayed to user asking for product code.
-   * min - minimum value of code.
-   * max - maximum value of code. *)
-  function GetsProductCode(message : string; min, max : integer) : string;
-    var 
-      input : integer;
-      output : string;
-  begin
-    repeat
-      ClrScr;
-      Writeln('------P R O D U T O S------');  
-      Writeln('------R E G I S T R O------');
-      Writeln(message);
-      Readln(input);
-    until (input > min) and (input < max);
-    
-    str(input, output);
-    GetsProductCode := output;
-  end;
-
 end.

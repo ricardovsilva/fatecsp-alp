@@ -6,7 +6,8 @@ interface
 implementation
 
   uses
-    SellsUtils;
+    SellsUtils,
+    InputUtils;
 
   Procedure ShowSellsScreen(sellsFile : string; productsFile : string);
   const
@@ -53,6 +54,9 @@ implementation
   procedure ShowRandomSells(sellsFile: string; productsFile: string);
   var
     year, month, quantity, percentage : integer;
+  const
+    sellMax = 50;
+    sellMin = 25;
   begin
     Clrscr;
     Writeln('--------V E N D A S--------');
@@ -62,8 +66,7 @@ implementation
     Write('Digite o mês ao qual as vendas serão geradas: ');
     Readln(month);
     
-    Write('Digite a quantidade de vendas aleatórias a serem geradas: ');
-    Readln(quantity);
+    quantity := GetsInteger('Digite a quantidade de vendas aleatórias a serem geradas por dia: ', sellMin, sellMax);
     
     Write('Digite a porcentagem de variação dos preços (em inteiro): ');
     Readln(percentage);
