@@ -77,7 +77,7 @@ implementation
   begin
     str(sellToParse.Quantity, quantity);
   
-    sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code,';');
+    sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code),';');
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
     sellString := concat(sellString,RealToStr(sellToParse.Price, decimalLength));
