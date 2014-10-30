@@ -35,7 +35,7 @@ implementation
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
   var
     day : integer;
-    sellsFile : Text;
+    sellsFile : Text;    
     currentSell : sell;
     i : integer;
     randomProduct : Product;
@@ -67,7 +67,7 @@ implementation
   
   (*Receives one sell and returns it csv formated.
    * The format will be:
-   * productCode;dateTime;quantity;TotalPrice*)
+   * productCode;dateTime;quantity;TotalPrice;verifierDigit*)
   function SellToString(sellToParse : Sell) : string;
   const
     decimalLength = 2;
@@ -81,6 +81,7 @@ implementation
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
     sellString := concat(sellString,RealToStr(sellToParse.Price, decimalLength));
+    sellString := concat(sellString,CalculateVerifierDIgit(sellToParse.Product.Code));
     
     SellToString := sellString;
   end;
