@@ -57,14 +57,18 @@ implementation
   const
     sellMax = 50;
     sellMin = 25;
+    
+    yearMax = 9999;
+    yearMin = 2009;
+    
+    monthMin = 0;
+    monthMax = 13;
   begin
     Clrscr;
     Writeln('--------V E N D A S--------');
-    Write('Digite o ano ao qual as vendas serão geradas: ');
-    Readln(year);
+    year := GetsInteger('Digite o ano ao qual as vendas serão geradas (2010 ou superior): ', yearMin, yearMax);
     
-    Write('Digite o mês ao qual as vendas serão geradas: ');
-    Readln(month);
+    month := GetsInteger('Digite o mês ao qual as vendas serão geradas: ', monthMin, monthMax);
     
     quantity := GetsInteger('Digite a quantidade de vendas aleatórias a serem geradas por dia: ', sellMin, sellMax);
     
