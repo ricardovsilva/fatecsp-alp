@@ -2,7 +2,8 @@ Program TestEngine ;
 uses
   DateTimeUtilsTests,
   SellsUtilsTests,
-  crt;
+  crt,
+  wincrt;
 var
   c : string;
   result : boolean;

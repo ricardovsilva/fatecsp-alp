@@ -7,6 +7,14 @@ interface
   function GetsDateTime(year : integer; month : integer; day : integer) : string;
   function GetsQuantityOfDays(month : integer; year : integer) : integer;
   function RequestMonthNumber(message : string) : integer;  
+  function WeekDay ( Day, Month, Year : Integer ) : Integer;
+  
+  Type
+    DateTime = record
+      year : integer;
+      month : integer;
+      day : integer;
+  end;
 
 implementation
   uses
@@ -109,4 +117,37 @@ implementation
     
     GetsDateTime := concat(y,'-',m,'-',d);
   end;
+  
+  (*Receives year, month and day and returns the weekday.
+    This function was get from 
+    http://computer-programming-forum.com/29-pascal/aa194b47b3e9a518.htm
+    at 2014-10-31*)
+  function WeekDay ( Day, Month, Year : Integer ) : Integer;
+    function FirstThursday (Year: Integer) : Integer;
+    begin
+      FirstThursday := 7 - (1 + (Year-1600) + (Year-1597) div 4
+      - (Year-1501) div 100 + (Year-1201) div 400) mod 7;
+    end; (* FirstThursday *)
+    function DayNumber (Day, Month, Year : Integer) : Integer;
+    var
+      ordNumber : integer;
+      ordIsTrue : boolean;
+    const DaysBeforeMonth : array [1..12] of Integer =
+          (0,31,59,90,120,151,181,212,243,273,304,334);
+    begin
+      ordIsTrue := (Month > 2) and
+        (Year mod 4 = 0) and ((Year mod 100 <> 0) or
+        (Year mod 400 = 0));
+      if(ordIsTrue) then ordNumber := 0 else ordNumber :=1;
+      DayNumber := DaysBeforeMonth[Month] + Day +  ordNumber;
+    end; (* DayNumber *)
+  begin
+    WeekDay:=(7+DayNumber(Day,Month,Year)-FirstThursday(Year)+3) mod 7;
+  end; (* WeekDay *)
+  {}
+  function WeekDayString (Day, Month, Year : Integer) : String;
+  const DayStr = 'MonTueWedThuFriSatSun';
+  begin
+    WeekDayString := Copy (DayStr, 3*WeekDay(Day,Month,Year)+1, 3);
+  end; 
 end.

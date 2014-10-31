@@ -4,13 +4,12 @@ interface
   procedure DisplaySelectedProductMenu(option : integer; productFile : string);
   procedure ShowDeleteProduct;
   procedure ShowProductMenu(productFile : string);
-
+  
 implementation
-  uses
+  uses 
     ProductUtils,
     ProductConsultScreen,
-    ProductRegisterScreen,
-    crt;
+    ProductRegisterScreen;
 
   (*Show Main Menu of product functions.*)
   procedure ShowProductMenu(productFile : string);
@@ -21,17 +20,17 @@ implementation
     returnToMainMenu = 4;
   var
     option : integer;
-  begin
+  begin  
     while option <> returnToMainMenu do
-    begin
+    begin    
       ClrScr;
-      Writeln('------P R O D U T O S------');
+      Writeln('------P R O D U T O S------');    
       Writeln('[1] Consultar produto.');
       Writeln('[2] Cadastrar novo produto.');
       Writeln('[3] Deletar produto.');
       Writeln('[4] Voltar ao menu principal.');
       Writeln('Digite a opção desejada: ');
-
+      
       Readln(option);
       if (option < 1) or (option > 4) then
       begin
@@ -43,7 +42,7 @@ implementation
       end;
     end;
   end;
-
+  
   (*Receives number of selected option then displays menu*)
   procedure DisplaySelectedProductMenu(option : integer; productFile : string);
   const
@@ -56,18 +55,18 @@ implementation
     begin
       ShowConsultProduct(productFile);
     end
-
+    
     else if option = register then
     begin
       ShowProductRegisterScreen(productFile);
     end
-
+    
     else if option = deleteProduct then
     begin
       ShowDeleteProduct
     end;
   end;
-
+  
   (*Shows menu to delete product*)
   procedure ShowDeleteProduct;
   begin

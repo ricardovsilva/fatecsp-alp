@@ -7,8 +7,7 @@ implementation
 
   uses
     SellsUtils,
-    InputUtils,
-    crt;
+    InputUtils;
 
   Procedure ShowSellsScreen(sellsFile : string; productsFile : string);
   const
@@ -17,10 +16,10 @@ implementation
     option : integer;
     quantityOfSells : integer;
     year : integer;
-    month : integer;
+    month : integer;  
   begin
     option := 0;
-
+    
     repeat
       clrscr;
       Writeln('--------V E N D A S--------');
@@ -29,11 +28,11 @@ implementation
       Writeln('[3] Voltar ao menu principal');
       Write('Digite a opção desejada: ');
       Readln(option);
-
+      
       ShowSelectedMenu(sellsFile, productsFile, option);
     until option = quit;
   end;
-
+  
   procedure ShowSelectedMenu(sellsFile : string; productsFile : string; option : integer);
   const
     randomSells = 1;
@@ -43,7 +42,7 @@ implementation
     begin
       ShowRandomSells(sellsFile, productsFile);
     end
-
+    
     else if option = consultSells then
     begin
       Writeln('Função não implementada ainda. Aguarde nova versão');
@@ -51,33 +50,33 @@ implementation
       Readkey;
     end;
   end;
-
+  
   procedure ShowRandomSells(sellsFile: string; productsFile: string);
   var
     year, month, quantity, percentage : integer;
   const
     sellMax = 50;
     sellMin = 25;
-
+    
     yearMax = 9999;
     yearMin = 2009;
-
+    
     monthMin = 0;
     monthMax = 13;
   begin
     Clrscr;
     Writeln('--------V E N D A S--------');
     year := GetsInteger('Digite o ano ao qual as vendas serão geradas (2010 ou superior): ', yearMin, yearMax);
-
+    
     month := GetsInteger('Digite o mês ao qual as vendas serão geradas: ', monthMin, monthMax);
-
+    
     quantity := GetsInteger('Digite a quantidade de vendas aleatórias a serem geradas por dia: ', sellMin, sellMax);
-
+    
     Write('Digite a porcentagem de variação dos preços (em inteiro): ');
     Readln(percentage);
-
+    
     GenerateRandomSells(sellsFile, productsFile, year, month, quantity, percentage);
-
+    
     Writeln(quantity, ' vendas geradas com sucesso!');
     Writeln('Pressione qualquer tecla para voltar ao menu anterior...');
     Readkey;

@@ -3,7 +3,7 @@ interface
   uses
    Stringutils,
    ProductUtils;
-
+  
   Type
     Sell = Record
     Datetime : string;
@@ -11,18 +11,20 @@ interface
     Product : Product;
     Price : Real;
   End;
-
+  
   function SellToString(sellToParse : Sell) : string;
-  function CalculateVerifierDigit(sellCode : string):string;
-
+  function CalculateVerifierDigit(sellCode : string[4]):string;
+    
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
-
+  
 implementation
   uses
+    StringUtils,
     RealUtils,
     RandomUtils,
-    DateTimeUtils;
-
+    DateTimeUtils,
+    ProductUtils;
+  
     (*Generate random sells based on parameters.
    *Parameters are:
    *   sellsPath - Path of file where sells generated will be saved.
@@ -33,7 +35,7 @@ implementation
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
   var
     day : integer;
-    sellsFile : Text;
+    sellsFile : Text;    
     currentSell : sell;
     i : integer;
     randomProduct : Product;
@@ -41,28 +43,28 @@ implementation
   begin
     Assign(sellsFile, sellsPath);
     Append(sellsFile);
-
+    
     productArray := GetsProducts(productsPath);
-
+    
     for i := 1 to quantity do
     begin
        day := GenerateRandomDay(month, year);
        currentSell.Datetime := GetsDateTime(year, month, day);
-
+       
        currentSell.Product := GetsRandomProduct(productsPath, productArray);
-
+       
        currentSell.Product.Price := AddRandomPercentage(currentSell.Product.Price, pricePercentage);
-
-       Randomize;
+       
+       Randomize;       
        currentSell.Quantity := Random(100) + 1;
        currentSell.Price := currentSell.Product.Price * currentSell.Quantity;
-
+       
        Writeln(sellsFile, SellToString(currentSell));
     end;
-
+    
     Close(sellsFile);
-  end;
-
+  end;   
+  
   (*Receives one sell and returns it csv formated.
    * The format will be:
    * productCode-verifierDigit;dateTime;quantity;unityPrice*)
@@ -74,7 +76,7 @@ implementation
     quantity : string;
   begin
     str(sellToParse.Quantity, quantity);
-
+  
     sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code),';');
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
@@ -84,8 +86,8 @@ implementation
   end;
 
   (*Receives one sell code, calculates and returns the verifier digit.*)
-  function CalculateVerifierDigit(sellCode : string):string;
-    var
+  function CalculateVerifierDigit(sellCode : string[4]):string;
+    var 
     calc : string;
     i, sum: integer;
     toInt: Array [0..3]of integer;

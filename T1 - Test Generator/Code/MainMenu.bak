@@ -7,8 +7,7 @@ implementation
 uses
   ProductHandler,
   AboutScreen,
-  SellsScreen,
-  crt;
+  SellsScreen;
   (* Show main menu. The parameters are:
    * productsPath - The path to products file.
    * sellsPath - The path to file where sells will be generated. *)
@@ -19,9 +18,9 @@ uses
     option : integer;
   begin
     option := 0;
-
+    
     while option <> quit do
-    begin
+    begin    
       Clrscr;
       Writeln('----------M E N U----------');
       Writeln('[1] Menu de Produtos');
@@ -31,19 +30,19 @@ uses
       Writeln('');
       Write('Digite a opção desejada: ');
       Readln(option);
-
+      
       if (option < 1) or (option > 4) then
       begin
         ShowMainMenu(productsPath, sellsPath);
       end
-
+      
       else
       begin
         DisplaySelectedMenu(productsPath, sellsPath, option);
       end;
     end;
   end;
-
+  
   procedure DisplaySelectedMenu(productsPath : string; sellsPath: string; selectedOption : integer);
   const
     product = 1;
@@ -54,16 +53,16 @@ uses
     begin
       ShowProductMenu(productsPath);
     end
-
+    
     else if selectedOption = sells then
     begin
       ShowSellsScreen(sellsPath, productsPath);
     end
-
+    
     else if selectedOption = about then
     begin
       ShowAboutMenu;
     end;
-
+    
   end;
 end.

@@ -8,7 +8,7 @@ Program TestGenerator ;
     ProductUtils,
     SellsUtils,
     MainMenu,
-    crt,
+    wincrt,
     sysutils;
 
 var

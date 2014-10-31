@@ -12,23 +12,25 @@ interface
     Products = array[1..255] of Product;
 
   function AddNewProduct(filePath : string; newProduct : Product) : boolean;
-  function GetsProducts(filePath : String) : Products;
+  function DeleteProduct(filePath : string; newProduct : Product) : boolean;
+  function GetsProducts(filePath : String[255]) : Products;    
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   function GetsProductByName(filePath : string; productName : string) : Product;
   function GetsRandomProduct(filePath: string ; productArray : Products) : Product;
   function LengthOfProducts(productArray : Products) : integer;
-  function LineIsValid(line : String): boolean;
+  function LineIsValid(line : String[255]): boolean;
   function ParseProduct(productInfo : SplitedText) : Product;
   function ProductExists(productFile: string; productInfo : Product) : boolean;
   function ProductToString(productToParse : Product) : string;
-
+  
   procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
-
+    
 implementation
-  uses
+  uses 
+    StringUtils,
     RealUtils;
-
+  
   (*Adds new product to file and returns a value indicating
    * that product was successfully added.
    * Parameters are:
@@ -44,7 +46,7 @@ implementation
     begin
       AddNewProduct := false;
     end
-
+    
     else
     begin
       Assign(productFile, filePath);
@@ -54,8 +56,38 @@ implementation
       AddNewProduct := true;
     end;
   end;
+  
+  (*Delete given product from file. This function doesn't work yet.*)
+  function DeleteProduct(filePath : string; newProduct : Product) : boolean;
+  var
+    productFile : File of string;
+    lineNumber, counter : integer;
+    currentLine : string[255];
+  begin
+    if not ProductExists(filePath, newProduct) then
+    begin
+      DeleteProduct := false;
+    end
+    
+    else
+    begin
+      Assign(productFile, filePath);
+      Reset(productFile);
+      lineNumber := 0;
+      
+      while not (EOF(productFile)) and not (StringStartsWith(currentLine, newProduct.Code)) do
+      begin
+        Readln(productFile, currentLine);
+        lineNumber := lineNumber + 1;
+      end;           
 
-  (* Verifies if other product with same code already exists into file
+      Seek(productFile, lineNumber - 1);
+      Close(productFile);
+    end;
+  end;
+      
+
+  (*Verifies if other product with same code already exists into file
   * passed by parameter.
   * Parameters are:
   *    productFile - File to search by product.
@@ -68,8 +100,8 @@ implementation
     searchedProduct := GetsProductByCode(productFile, StrToInteger(productInfo.Code));
     ProductExists := not StringIsEmpty(searchedProduct.Code);
   end;
-
-  (*Parse array of strings into Product struct*)
+  
+  (*Parse array of strings into Product struct*)  
   function ParseProduct(productInfo : SplitedText) : Product;
   var
     returnProduct : Product;
@@ -78,16 +110,16 @@ implementation
     codeIndex := 1;
     nameIndex := 2;
     priceIndex := 3;
-
+    
     returnProduct.Code := productInfo[codeIndex];
     returnProduct.Name := productInfo[nameIndex];
     returnProduct.Price := StrToReal(productInfo[priceIndex]);
-
+    
     ParseProduct := returnProduct;
-  End;
-
-  (*Gets lines of products from file passed by parameter*)
-  function GetsProducts(filePath : String) : Products;
+  End;  
+  
+  (*Gets lines of products from file passed by parameter*) 
+  function GetsProducts(filePath : String[255]) : Products;
   var
     productsVar : Products;
     counter : integer;
@@ -97,10 +129,10 @@ implementation
   Begin
     counter := 1;
     separator := ';';
-
+    
     Assign(fileVar, filePath);
     Reset(fileVar);
-
+   
     while not EOF(fileVar) do
     begin
       Readln(fileVar, line);
@@ -114,7 +146,7 @@ implementation
     Close(fileVar);
     GetsProducts := productsVar;
   End;
-
+  
   (*Retrieves random product from given file*)
   function GetsRandomProduct(filePath: string; productArray : Products) : Product;
   var
@@ -126,10 +158,10 @@ implementation
     quantity := LengthOfProducts(productList);
     Randomize;
     index := Random(quantity) + 1;
-
+    
     GetsRandomProduct := productList[index];
   end;
-
+  
   (*Gets the length of products array*)
   function LengthOfProducts(productArray : Products) : integer;
   const
@@ -138,21 +170,21 @@ implementation
     counter : integer;
   begin
     counter := 0;
-
+    
     while not StringIsEmpty(productArray[counter + 1].Code) do
     begin
       counter := counter + 1;
     end;
-
+    
     LengthOfProducts := counter;
   end;
-
+  
   (*Verify if line is not an comment*)
-  function LineIsValid(line : String): boolean;
+  function LineIsValid(line : String[255]): boolean;
   Begin
     LineIsValid:= not StringIsEmpty(line) and not StringStartsWith(line, '#');
   end;
-
+  
   (*Returns product from file searching by code*)
   function GetsProductByCode(filePath : string; productCode : integer) : Product;
   var
@@ -162,18 +194,18 @@ implementation
   begin
     productList := GetsProducts(filePath);
     productCount := LengthOfProducts(productList);
-
+    
     for i := 1 to productCount do
     begin
       Val(productList[i].Code, currentProductCode, c);
-
+      
       if currentProductcode = productCode then
       begin
         GetsProductByCode := productList[i];
       end;
-    end;
+    end;    
   end;
-
+  
   (*Returns product from file searching by description*)
   function GetsProductByName(filePath : string; productName : string) : Product;
   var
@@ -183,14 +215,14 @@ implementation
   begin
     productList := GetsProducts(filePath);
     productCount := LengthOfProducts(productList);
-
+    
     for i := 1 to productCount do
     begin
       if productList[i].Name = productName then
         GetsProductByName := productList[i];
     end
   end;
-
+  
   (*Receive product and returns string representation
    *of product file. code;name;price *)
   function ProductToString(productToParse : Product) : string;
@@ -200,16 +232,16 @@ implementation
   var
     returnText : string[255];
     price : string[10];
-  begin
+  begin 
     price := RealToStr(productToParse.Price, decimalLength);
-
+  
     returnText := productToParse.Code + ';';
     returnText := returnText + productToParse.Name + ';';
     returnText := returnText + price + ';';
-
+    
     ProductToString := returnText;
   end;
-
+  
   (*Print product passed by parameter*)
   procedure PrintProduct(productToPrint : Product);
   begin
@@ -218,7 +250,7 @@ implementation
     WriteLn('Preço: ', productToPrint.Price:6:2);
     WriteLn;
   end;
-
+  
   (*Prints all products of array*)
   procedure PrintProducts(productsArray : Products);
   var
