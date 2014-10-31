@@ -6,10 +6,10 @@ interface
   function GenerateRandomDay (month : integer; year: integer) : integer;
   function GetsDateTime(year : integer; month : integer; day : integer) : string;
   function GetsQuantityOfDays(month : integer; year : integer) : integer;
-  function RequestMonthNumber(message : string) : integer;
+  function RequestMonthNumber(message : string) : integer;  
   function WeekDay ( Day, Month, Year : Integer ) : Integer;
   function IsWorkingDay(year, month, day : integer) : boolean;
-
+  
   Type
     DateTime = record
       year : integer;
@@ -53,34 +53,34 @@ implementation
       months[4] := aprDays;
       months[5] := mayDays;
       months[6] := junDays;
-      months[7] := julDays;
-      months[8] := augDays;
-      months[9] := sepDays;
+      months[7] := julDays;     
+      months[8] := augDays;   
+      months[9] := sepDays;    
       months[10] := octDays;
       months[11] := novDays;
       months[12] := decDays;
-
+      
       days := months[month];
-
+      
       if IsLeapYear(year) and (month = 2) then
         days := days + 1;
     end;
-
+    
     GetsQuantityOfDays := days;
   end;
-
+  
   (*Verify if given year is leap year*)
   function IsLeapYear(year : integer) : boolean;
   begin
     IsLeapYear := (year mod 4) = 0;
   end;
-
-  (*Verify if given number is month number*)
+  
+  (*Verify if given number is month number*)  
   function IsMonth(number : integer) : boolean;
   begin
     IsMonth := ((number > 1) and (number < 12)) or (number = 1) or (number = 12);
   end;
-
+  
   (*Request the number of month*)
   function RequestMonthNumber(message : string) : integer;
   var
@@ -89,21 +89,21 @@ implementation
     repeat
       Write(message);
       Readln(monthNumber);
-
+      
     until IsMonth(monthNumber);
   end;
-
+  
   (*Generate random day of the month*)
   function GenerateRandomDay (month : integer; year: integer) : integer;
   var
     daysInMonth : integer;
   begin
     daysInMonth := GetsQuantityOfDays(month, year);
-
+    
     Randomize;
     GenerateRandomDay := Random(daysInMonth) + 1;
   end;
-
+  
   (*Receives year, month and day and returns string formated yyyy-mm-dd*)
   function GetsDateTime(year : integer; month : integer; day : integer) : string;
   var
@@ -112,15 +112,15 @@ implementation
     str(year, y);
     str(month, m);
     str(day, d);
-
+   
     m:= AddPadLeft(m, '0', 2);
     d:= AddPadLeft(d, '0', 2);
-
+    
     GetsDateTime := concat(y,'-',m,'-',d);
   end;
-
+  
   (*Receives year, month and day and returns the weekday.
-    This function was get from
+    This function was get from 
     http://computer-programming-forum.com/29-pascal/aa194b47b3e9a518.htm
     at 2014-10-31*)
   function WeekDay ( Day, Month, Year : Integer ) : Integer;
@@ -150,14 +150,14 @@ implementation
   const DayStr = 'MonTueWedThuFriSatSun';
   begin
     WeekDayString := Copy (DayStr, 3*WeekDay(Day,Month,Year)+1, 3);
-  end;
+  end; 
 
   function IsWorkingDay(year, month, day : integer) : boolean;
     var
       date : TDateTime;
     begin
       date := EncodeDate(year, month, day);
-      if date = 1 then
+      if date := 1 then
         IsWorkingDay := false;
       IsWorkingDay := true;
     end;
