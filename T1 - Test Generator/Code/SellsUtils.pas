@@ -15,7 +15,7 @@ interface
   function SellToString(sellToParse : Sell) : string;
   function CalculateVerifierDigit(sellCode : string):string;
 
-  Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
+  Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantityPerDay : integer; pricePercentage : integer);
 
 implementation
   uses
@@ -29,8 +29,8 @@ implementation
    *   productsPath - Path of products to generate sells.
    *   year - Year at sells will be generated.
    *   month - Month at sells will be generated.
-   *   quantity - Quantity of random sells that will be generated. *)
-  Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantity : integer; pricePercentage : integer);
+   *   quantityPerDay - Quantity of random sells per day that will be generated. *)
+  Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantityPerDay : integer; pricePercentage : integer);
   var
     day : integer;
     sellsFile : Text;
@@ -38,28 +38,31 @@ implementation
     i : integer;
     randomProduct : Product;
     productArray : Products;
+	quantityOfDays: integer;
   begin
     Assign(sellsFile, sellsPath);
-    Append(sellsFile);
+    Rewrite(sellsFile);
 
     productArray := GetsProducts(productsPath);
 
-    for i := 1 to quantity do
-    begin
-       day := GenerateRandomDay(month, year);
-       currentSell.Datetime := GetsDateTime(year, month, day);
+	quantityOfDays := GetsQuantityOfDays(month, year);
+	
+	for day := 1 to quantityOfDays do
+		if IsWorkingDay(year, month, day) then
+			for i := 1 to quantityPerDay do
+			begin
+			   currentSell.Datetime := GetsDateTime(year, month, day);
 
-       currentSell.Product := GetsRandomProduct(productsPath, productArray);
+			   currentSell.Product := GetsRandomProduct(productsPath, productArray);
 
-       currentSell.Product.Price := AddRandomPercentage(currentSell.Product.Price, pricePercentage);
+			   currentSell.Product.Price := AddRandomPercentage(currentSell.Product.Price, pricePercentage);
 
-       Randomize;
-       currentSell.Quantity := Random(100) + 1;
-       currentSell.Price := currentSell.Product.Price * currentSell.Quantity;
+			   Randomize;
+			   currentSell.Quantity := Random(100) + 1;
+			   currentSell.Price := currentSell.Product.Price * currentSell.Quantity;
 
-       Writeln(sellsFile, SellToString(currentSell));
-    end;
-
+			   Writeln(sellsFile, SellToString(currentSell));
+			end;
     Close(sellsFile);
   end;
 
