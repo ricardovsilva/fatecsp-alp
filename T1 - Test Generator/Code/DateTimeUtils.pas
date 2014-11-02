@@ -157,8 +157,6 @@ implementation
       date : TDateTime;
     begin
       date := EncodeDate(year, month, day);
-      if date = 1 then
-        IsWorkingDay := false;
-      IsWorkingDay := true;
+      IsWorkingDay := date <> 1;
     end;
 end.
