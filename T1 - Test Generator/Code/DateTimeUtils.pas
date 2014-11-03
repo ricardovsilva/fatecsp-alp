@@ -153,10 +153,7 @@ implementation
   end;
 
   function IsWorkingDay(year, month, day : integer) : boolean;
-    var
-      date : TDateTime;
-    begin
-      date := EncodeDate(year, month, day);
-      IsWorkingDay := date <> 1;
-    end;
+  begin
+    IsWorkingDay := DayOfWeek(EncodeDate(year, month, day)) <> 1;
+  end;
 end.
