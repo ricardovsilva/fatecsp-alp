@@ -21,6 +21,7 @@ interface
   function ParseProduct(productInfo : SplitedText) : Product;
   function ProductExists(productFile: string; productInfo : Product) : boolean;
   function ProductToString(productToParse : Product) : string;
+  function RemoveVerifierDigit(code : string) : string;
 
   procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
@@ -231,4 +232,12 @@ implementation
       end
     end
   end;
+  
+  function RemoveVerifierDigit(code : string) : string;
+  var indChar: integer;
+  begin
+    indChar := pos('-', code);
+	RemoveVerifierDigit := copy(code, 1, indChar - 1);
+  end;
+  
 end.
