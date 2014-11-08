@@ -47,20 +47,22 @@ implementation
 
 	quantityOfDays := GetsQuantityOfDays(month, year);
 	
+	//Just one use of Randomize per program.
+	Randomize;
 	for day := 1 to quantityOfDays do
 		if IsWorkingDay(year, month, day) then
 			for i := 1 to quantityPerDay do
 			begin
 			   currentSell.Datetime := GetsDateTime(year, month, day);
-
+			   
 			   currentSell.Product := GetsRandomProduct(productsPath, productArray);
-
+			   
 			   currentSell.Product.Price := AddRandomPercentage(currentSell.Product.Price, pricePercentage);
 
-			   Randomize;
+			   //Randomize;
 			   currentSell.Quantity := Random(100) + 1;
 			   currentSell.Price := currentSell.Product.Price * currentSell.Quantity;
-
+               
 			   Writeln(sellsFile, SellToString(currentSell));
 			end;
     Close(sellsFile);

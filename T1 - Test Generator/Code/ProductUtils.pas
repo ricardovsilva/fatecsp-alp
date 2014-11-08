@@ -124,7 +124,7 @@ implementation
   begin
     productList := productArray;
     quantity := LengthOfProducts(productList);
-    Randomize;
+    //Randomize;
     index := Random(quantity) + 1;
 
     GetsRandomProduct := productList[index];

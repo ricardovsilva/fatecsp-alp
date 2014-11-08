@@ -17,11 +17,11 @@ implementation
     randomizedValue : real;
     signal : integer;
   begin
-    Randomize;
+    //Randomize;
     randomNumber := random(maxPercentage) + 1;
     randomPercentage := randomNumber / 100;
     
-    Randomize;
+    //Randomize;
     signal := random(100);
     signal := signal mod 2;
     
