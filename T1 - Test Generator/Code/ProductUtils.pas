@@ -211,6 +211,18 @@ implementation
     ProductToString := returnText;
   end;
 
+  (*Receives one code with verifier digit and returns it without verifier digit*
+   *Example: *
+   *Input: '1234-5'
+   *Output: '1234' *)
+  function RemoveVerifierDigit(code : string) : string;
+  const
+    index = 1;
+    count = 4;
+  begin
+    RemoveVerifierDigit := Copy(code, index, count);
+  end;
+
   (*Print product passed by parameter*)
   procedure PrintProduct(productToPrint : Product);
   begin
@@ -238,6 +250,5 @@ implementation
   begin
     indChar := pos('-', code);
 	RemoveVerifierDigit := copy(code, 1, indChar - 1);
-  end;
-  
+  end;  
 end.

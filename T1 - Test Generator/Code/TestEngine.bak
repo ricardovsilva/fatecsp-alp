@@ -17,7 +17,6 @@ Begin
   Writeln('------ProductUtilsTests------');
   result := RemoveVerifierDigitTest;
 
-
   Writeln('-------SellsUtilsTests--------');
   result := CalculateVerifierDigitTest and result;
   result := SellToStringTest and result;
