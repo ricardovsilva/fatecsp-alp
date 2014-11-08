@@ -1,6 +1,7 @@
 Program TestEngine ;
 uses
   DateTimeUtilsTests,
+  ProductUtilsTests,
   SellsUtilsTests,
   crt;
 var
@@ -12,6 +13,10 @@ Begin
 
   Writeln('------DateTimeUtilsTests------');
   result := WeekDayTest and result;
+
+  Writeln('------ProductUtilsTests------');
+  result := RemoveVerifierDigitTest;
+
 
   Writeln('-------SellsUtilsTests--------');
   result := CalculateVerifierDigitTest and result;

@@ -21,6 +21,7 @@ interface
   function ParseProduct(productInfo : SplitedText) : Product;
   function ProductExists(productFile: string; productInfo : Product) : boolean;
   function ProductToString(productToParse : Product) : string;
+  function RemoveVerifierDigit(code : string) : string;
 
   procedure PrintProduct(productToPrint : Product);
   procedure PrintProducts(productsArray : Products);
@@ -208,6 +209,18 @@ implementation
     returnText := returnText + price + ';';
 
     ProductToString := returnText;
+  end;
+
+  (*Receives one code with verifier digit and returns it without verifier digit*
+   *Example: *
+   *Input: '1234-5'
+   *Output: '1234' *)
+  function RemoveVerifierDigit(code : string) : string;
+  const
+    index = 1;
+    count = 4;
+  begin
+    RemoveVerifierDigit := Copy(code, index, count);
   end;
 
   (*Print product passed by parameter*)
