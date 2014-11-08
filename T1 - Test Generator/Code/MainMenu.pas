@@ -8,13 +8,14 @@ uses
   ProductHandler,
   AboutScreen,
   SellsScreen,
+  StatisticsScreen,
   crt;
   (* Show main menu. The parameters are:
    * productsPath - The path to products file.
    * sellsPath - The path to file where sells will be generated. *)
   procedure ShowMainMenu(productsPath : string; sellsPath : string);
   const
-    quit = 4;
+    quit = 5;
   var
     option : integer;
   begin
@@ -26,13 +27,14 @@ uses
       Writeln('----------M E N U----------');
       Writeln('[1] Menu de Produtos');
       Writeln('[2] Menu de Vendas');
-      Writeln('[3] Sobre este programa');
-      Writeln('[4] Sair');
+      Writeln('[3] Gerar Estatisticas');
+      Writeln('[4] Sobre este programa');
+      Writeln('[5] Sair');
       Writeln('');
       Write('Digite a opção desejada: ');
       Readln(option);
 
-      if (option < 1) or (option > 4) then
+      if (option < 1) or (option > 5) then
       begin
         ShowMainMenu(productsPath, sellsPath);
       end
@@ -48,7 +50,8 @@ uses
   const
     product = 1;
     sells = 2;
-    about = 3;
+    statistics = 3;
+    about = 4;
   begin
     if selectedOption = product then
     begin
@@ -58,6 +61,11 @@ uses
     else if selectedOption = sells then
     begin
       ShowSellsScreen(sellsPath, productsPath);
+    end
+
+    else if selectedOption = statistics then
+    begin
+      ShowStatisticsScreen(sellsPath, productsPath);
     end
 
     else if selectedOption = about then
