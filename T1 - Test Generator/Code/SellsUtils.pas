@@ -95,20 +95,24 @@ implementation
   * the return is one Sell record
   *)
   function StringToSell(sellString : string) : Sell;
+  const
+    codePosition = 1;
+    datePosition = 2;
+    quantityPosition = 3;
+    pricePosition = 4;
   var
     arrayString : SplitedText;
-	returnSell : Sell;
+	  returnSell : Sell;
   begin
     arrayString := Split(sellString, ';');
 	
-	returnSell.Product.Code := RemoveVerifierDigit(arrayString[1]);
-	returnSell.Datetime := arrayString[2];
-    returnSell.Quantity := StrToInteger(arrayString[3]);
-    returnSell.Price := StrToReal(arrayString[4]);
+	  returnSell.Product.Code := RemoveVerifierDigit(arrayString[codePosition]);
+	  returnSell.Datetime := arrayString[datePosition];
+    returnSell.Quantity := StrToInteger(arrayString[quantityPosition]);
+    returnSell.Product.Price := StrToReal(arrayString[pricePosition]);
+    returnSell.Price := returnSell.Product.Price * returnSell.Quantity;
 	
-	returnSell.Product.Price := returnSell.Price / returnSell.Quantity;
-	
-	StringToSell := returnSell;
+	  StringToSell := returnSell;
   end;
   
 
