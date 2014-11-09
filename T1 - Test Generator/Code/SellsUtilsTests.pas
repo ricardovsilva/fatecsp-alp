@@ -5,6 +5,7 @@ interface
 
   function CalculateVerifierDigitTest:boolean;
   function SellToStringTest:boolean;
+  function StringToSellTest:boolean;
 
 implementation
   uses
@@ -48,4 +49,22 @@ implementation
 
     SellToStringTest := AssertString(expected, actual, 'SellsUtilsTests.SellToStringTest');
   end;
+  
+  function StringToSellTest:boolean;
+  var
+    sellActual : Sell;
+	sellString : string; 
+  begin
+    sellString := '8383-5;2014-10-01;99;19506.96;';
+	
+	sellActual := StringToSell(sellString);
+	
+	StringToSellTest := 
+	          AssertString ('8383'          , sellActual.Product.Code , 'SellsUtilsTests.StringToSellTest.Product.Code')
+	      and AssertString ('2014-10-01'    , sellActual.DateTime     , 'SellsUtilsTests.StringToSellTest.DateTime')
+		  and AssertInteger(99              , sellActual.Quantity     , 'SellsUtilsTests.StringToSellTest.Quantity')
+		  and AssertReal   (19506.96        , sellActual.Price        , 'SellsUtilsTests.StringToSellTest.Price')
+		  and AssertReal   (197.04          , sellActual.Product.Price, 'SellsUtilsTests.StringToSellTest.Product.Price');
+  end;
+	
 end.

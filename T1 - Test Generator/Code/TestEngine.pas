@@ -21,6 +21,7 @@ Begin
   Writeln('-------SellsUtilsTests--------');
   result := CalculateVerifierDigitTest and result;
   result := SellToStringTest and result;
+  result := StringToSellTest and result;
 
   c:= ReadKey;
 End.

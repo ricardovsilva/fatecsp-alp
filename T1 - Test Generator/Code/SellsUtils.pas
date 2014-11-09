@@ -14,6 +14,7 @@ interface
 
   function SellToString(sellToParse : Sell) : string;
   function CalculateVerifierDigit(sellCode : string):string;
+  function StringToSell(sellString : string) : Sell;
 
   Procedure GenerateRandomSells(sellsPath: string; productsPath : string; year : integer; month : integer; quantityPerDay : integer; pricePercentage : integer);
 
@@ -36,7 +37,6 @@ implementation
     sellsFile : Text;
     currentSell : sell;
     i : integer;
-    randomProduct : Product;
     productArray : Products;
 	quantityOfDays: integer;
   begin
@@ -87,6 +87,30 @@ implementation
 
     SellToString := sellString;
   end;
+  
+  (* Receives one string with the following format:
+  * 3001-3;12/03/2012;16;37.80;
+  * The format above is:
+  * productCode-verifierDigit;dateTime;quantity;unityPrice
+  * the return is one Sell record
+  *)
+  function StringToSell(sellString : string) : Sell;
+  var
+    arrayString : SplitedText;
+	returnSell : Sell;
+  begin
+    arrayString := Split(sellString, ';');
+	
+	returnSell.Product.Code := RemoveVerifierDigit(arrayString[1]);
+	returnSell.Datetime := arrayString[2];
+    returnSell.Quantity := StrToInteger(arrayString[3]);
+    returnSell.Price := StrToReal(arrayString[4]);
+	
+	returnSell.Product.Price := returnSell.Price / returnSell.Quantity;
+	
+	StringToSell := returnSell;
+  end;
+  
 
   (*Receives one sell code, calculates and returns the verifier digit.*)
   function CalculateVerifierDigit(sellCode : string):string;
