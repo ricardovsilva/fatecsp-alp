@@ -65,7 +65,7 @@ implementation
                
 			   Writeln(sellsFile, SellToString(currentSell));
 			end;
-    Close(sellsFile);
+  Close(sellsFile);
   end;
 
   (*Receives one sell and returns it csv formated.
@@ -83,7 +83,7 @@ implementation
     sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code),';');
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
-    sellString := concat(sellString,RealToStr(sellToParse.Product.Price, decimalLength));
+    sellString := concat(sellString,RealToStr(sellToParse.Product.Price, decimalLength), ';');
 
     SellToString := sellString;
   end;
