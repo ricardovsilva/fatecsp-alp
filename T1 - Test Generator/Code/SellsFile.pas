@@ -9,7 +9,7 @@ interface
 
 	function GetsTotalSellsByProduct(productCode : string; sellsFilePath : string) : Real;
 
-	function GetsQuantityOfSelledProduct(sellsFilePath : string) : integer;
+	function GetsQuantityOfSelledProduct(sellsFilePath : string) : Real;
 
 	function GetsTotalSelled(sellsFilePath : string) : Real;
 
@@ -78,9 +78,28 @@ implementation
 	end;
 
 	(*This function gets the sum of all product quantities.*)
-	function GetsQuantityOfSelledProduct(sellsFilePath : string) : integer;
+	function GetsQuantityOfSelledProduct(sellsFilePath : string) : Real;
+	var
+		fileVar: Text;
+		currentSell : Sell;
+		currentLine : string;
+		total : Real;
 	begin
-		Writeln('Funcao GetsQuantityOfSelledProducts nao foi implementada ainda');
+		total := 0;
+
+		Assign(fileVar, sellsFilePath);
+		Reset(fileVar);
+
+		while not EOF(fileVar) do
+		begin
+			Readln(fileVar, currentLine);
+			currentSell := StringToSell(currentLine);
+
+			total := total + currentSell.Quantity;
+		end;
+
+		Close(fileVar);
+		GetsQuantityOfSelledProduct := total;
 	end;
 
 	(*This function gets the sum of all sells. It's must multiply quantity by unit price*)
