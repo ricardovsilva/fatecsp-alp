@@ -3,6 +3,7 @@ interface
 	procedure GenerateTotalSellsPerDay(statisticsFile, sellsFile : string);
 	procedure GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath : string);
 	procedure GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath : string);
+	procedure GenerateMediumOfSells(statisticsPath, sellsPath, productsPath : string);
 
 implementation
 	uses
@@ -101,6 +102,47 @@ implementation
 		Writeln(statisticsFile, '');
 		Writeln(statisticsFile, HEADER);
 		Writeln(statisticsFile, 'Total de Vendas                    ', FloatToStrf(GetsTotalSelled(sellsPath), fffixed, 12, 2));
+
+		Close(statisticsFile);
+	end;
+
+	procedure GenerateMediumOfSells(statisticsPath, sellsPath, productsPath : string);
+	var
+		sellsFile, statisticsFile: Text;
+		currentLine : string;
+		currentSell : sell;
+		currentDate : string;
+		yy, mm, dd, monthDays, workDays : integer;
+		totalSelled : real;
+		medium : real;
+	begin
+		workDays := 0;
+
+		Assign(sellsFile, sellsPath);
+		Reset(sellsFile);
+
+		Readln(sellsFile, currentLine);
+		currentSell := StringToSell(currentLine);
+		currentDate := currentSell.DateTime;
+
+		val(copy(currentDate, 1,4), yy);
+		val(copy(currentDate, 6,2), mm);
+
+		Close(sellsFile);
+
+		monthDays := GetsQuantityOfDays(mm, yy);
+
+		for dd := 1 to monthDays do
+			if(IsWorkingDay(yy, mm, dd)) then
+				workDays := workDays + 1;
+
+		totalSelled := GetsTotalSelled(sellsPath);
+		medium := totalSelled / workDays;
+
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		Writeln(statisticsFile, 'Média de Vendas por dia útil       ', FloatToStrF(medium, fffixed, 12, 2));
 
 		Close(statisticsFile);
 	end;
