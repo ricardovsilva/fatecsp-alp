@@ -63,7 +63,26 @@ implementation
 
 	(*This function gets the sum of all sells. It's must multiply quantity by unit price*)
 	function GetsTotalSelled(sellsFilePath : string) : Real;
+	var
+		fileVar: Text;
+		currentSell : Sell;
+		currentLine : string;
+		totalSelled : Real;
 	begin
-		Writeln('Funcao GetsTotalSelled nao implementada ainda.')
+		totalSelled := 0;
+
+		Assign(fileVar, sellsFilePath);
+		Reset(fileVar);
+
+		while not EOF(fileVar) do
+		begin
+			Readln(fileVar, currentLine);
+			currentSell := StringToSell(currentLine);
+
+			totalSelled := totalSelled + currentSell.Price;
+		end;
+
+		Close(fileVar);
+		GetsTotalSelled := totalSelled;
 	end;
 end.

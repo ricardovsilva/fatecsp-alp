@@ -20,6 +20,7 @@ Begin
 
   Writeln('--------SellsFileTests--------');
   result := GetsTotalSellsByDateTest and result;
+  result := GetsTotalSelledTest and result;
 
   Writeln('-------SellsUtilsTests--------');
   result := CalculateVerifierDigitTest and result;

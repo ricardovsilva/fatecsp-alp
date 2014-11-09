@@ -4,8 +4,7 @@ interface
     SellsUtils,
     SellsFile;
 
-  function GetsTotalSellsByDateTest : Boolean;
-  function GetsTotalSelledTest : Boolean;
+  function GetsTotalSellsByDateTest : Boolean; 
 
 implementation
   uses
@@ -35,10 +34,12 @@ implementation
       expected, actual : real;
     begin
       target := 'VendasTest.txt';
-      expected := 1566084.63;
+      expected := 1566084,63;
 
       actual := GetsTotalSelled(target);
 
-      GetsTotalSelledTest := AssertReal(expected, actual, 'SellsFileTests.GetsTotalSelledTest');
+      AssertReal(expected, actual, 'SellsFileTests.GetsTotalSelledTest');
+
+      GetsTotalSelledTest := actual;
     end;
 end.
