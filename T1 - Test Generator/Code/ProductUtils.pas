@@ -245,10 +245,4 @@ implementation
     end
   end;
   
-  function RemoveVerifierDigit(code : string) : string;
-  var indChar: integer;
-  begin
-    indChar := pos('-', code);
-	RemoveVerifierDigit := copy(code, 1, indChar - 1);
-  end;  
 end.
