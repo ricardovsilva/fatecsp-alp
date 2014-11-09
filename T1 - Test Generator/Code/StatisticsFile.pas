@@ -1,6 +1,7 @@
 unit StatisticsFile;
 interface
 	procedure GenerateTotalSellsPerDay(statisticsFile, sellsFile : string);
+	procedure GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath : string);
 implementation
 	uses
 	 SellsUtils,
@@ -14,7 +15,7 @@ implementation
 
 	procedure GenerateTotalSellsPerDay(statisticsFile, sellsFile : string);
 	const
-		HEADER = 'TOTAIS DE VENDAS POR DIA';
+		HEADER = 'TOTAIS DE VENDAS POR DIA:';
 		decimalPlaces = 2;
 	var
 		currentDate, lastDate, currentLine, textToWrite: string;
@@ -54,5 +55,34 @@ implementation
 		end;
 
 		Close(statisticsFileVar);
+	end;
+
+	procedure GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath : string);
+	const
+		HEADER = 'TOTAIS DE VENDAS POR PRODUTO: ';
+	var
+		productList : Products;
+		quantityOfProducts, i : integer;
+		statisticsFile : Text;
+		currentTotal : Real;
+		codeText : string;
+	begin
+		productList := GetsProducts(productsPath);
+		quantityOfProducts := LengthOfProducts(ProductList);
+
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		Writeln(statisticsFile, '');
+		Writeln(statisticsFile, HEADER);
+		for i := 1 to quantityOfProducts do
+		begin
+			currentTotal := GetsTotalSellsByProduct(productList[i].Code, sellsPath);
+			codeText := Concat(productList[i].Code, '-', CalculateVerifierDigit(productList[i].code));
+
+			Writeln(statisticsFile, codeText, '    ', FloatToStrf(currentTotal, fffixed, 12, 2));
+		end;
+
+		Close(statisticsFile);
 	end;
 end.

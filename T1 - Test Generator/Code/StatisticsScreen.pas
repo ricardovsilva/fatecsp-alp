@@ -14,6 +14,7 @@ implementation
 		clrscr;
 		Writeln('Gerando arquivo de estatistica...');
 		GenerateTotalSellsPerDay(statisticsPath, sellsPath);
+		GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath);
 		Readkey;
 	end;
 end.
