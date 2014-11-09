@@ -18,9 +18,9 @@ uses
     target.month := 10;
     target.day := 31;
 
-    expected := 5; //friday.
+    expected := 6; //friday.
 
-    actual := WeekDay(2014, 10, 31);
+    actual := WeekDay(target.year, target.month, target.day);
 
     WeekDayTest := AssertInteger(expected, actual, 'DateTimeUtilsTests.WeekDayTest');
   end;
