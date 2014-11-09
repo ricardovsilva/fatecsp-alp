@@ -2,6 +2,8 @@ unit StatisticsFile;
 interface
 	procedure GenerateTotalSellsPerDay(statisticsFile, sellsFile : string);
 	procedure GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath : string);
+	procedure GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath : string);
+
 implementation
 	uses
 	 SellsUtils,
@@ -82,6 +84,23 @@ implementation
 
 			Writeln(statisticsFile, codeText, '    ', FloatToStrf(currentTotal, fffixed, 12, 2));
 		end;
+
+		Close(statisticsFile);
+	end;
+
+
+	procedure GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath : string);
+	const
+		HEADER = 'TOTAL E ESTATÍSTICAS DO MÊS';
+	var
+		statisticsFile: Text;
+	begin
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		Writeln(statisticsFile, '');
+		Writeln(statisticsFile, HEADER);
+		Writeln(statisticsFile, 'Total de Vendas                    ', FloatToStrf(GetsTotalSelled(sellsPath), fffixed, 12, 2));
 
 		Close(statisticsFile);
 	end;

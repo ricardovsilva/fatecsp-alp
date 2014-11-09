@@ -15,6 +15,7 @@ implementation
 		Writeln('Gerando arquivo de estatistica...');
 		GenerateTotalSellsPerDay(statisticsPath, sellsPath);
 		GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath);
+		GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath);
 		Readkey;
 	end;
 end.
