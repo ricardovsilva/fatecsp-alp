@@ -1,7 +1,7 @@
 unit MainMenu;
 interface
-  procedure DisplaySelectedMenu(productsPath : string; sellsPath: string; selectedOption : integer);
-  procedure ShowMainMenu(productsPath : string; sellsPath : string);
+  procedure DisplaySelectedMenu(productsPath : string; sellsPath: string; statisticsPath : string; selectedOption : integer);
+  procedure ShowMainMenu(productsPath : string; sellsPath : string; statisticsPath : string);
 
 implementation
 uses
@@ -13,7 +13,7 @@ uses
   (* Show main menu. The parameters are:
    * productsPath - The path to products file.
    * sellsPath - The path to file where sells will be generated. *)
-  procedure ShowMainMenu(productsPath : string; sellsPath : string);
+  procedure ShowMainMenu(productsPath : string; sellsPath : string; statisticsPath : string);
   const
     quit = 5;
   var
@@ -36,17 +36,17 @@ uses
 
       if (option < 1) or (option > 5) then
       begin
-        ShowMainMenu(productsPath, sellsPath);
+        ShowMainMenu(productsPath, sellsPath, statisticsPath);
       end
 
       else
       begin
-        DisplaySelectedMenu(productsPath, sellsPath, option);
+        DisplaySelectedMenu(productsPath, sellsPath, statisticsPath, option);
       end;
     end;
   end;
 
-  procedure DisplaySelectedMenu(productsPath : string; sellsPath: string; selectedOption : integer);
+  procedure DisplaySelectedMenu(productsPath : string; sellsPath: string; statisticsPath : string; selectedOption : integer);
   const
     product = 1;
     sells = 2;
@@ -65,7 +65,7 @@ uses
 
     else if selectedOption = statistics then
     begin
-      ShowStatisticsScreen(sellsPath, productsPath);
+      ShowStatisticsScreen(sellsPath, productsPath, statisticsPath);
     end
 
     else if selectedOption = about then
