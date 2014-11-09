@@ -3,6 +3,7 @@ uses
   DateTimeUtilsTests,
   ProductUtilsTests,
   SellsUtilsTests,
+  SellsFileTests,
   crt;
 var
   c : string;
@@ -15,8 +16,10 @@ Begin
   result := WeekDayTest and result;
 
   Writeln('------ProductUtilsTests------');
-  result := RemoveVerifierDigitTest;
+  result := RemoveVerifierDigitTest and result;
 
+  Writeln('--------SellsFileTests--------');
+  result := GetsTotalSellsByDateTest and result;
 
   Writeln('-------SellsUtilsTests--------');
   result := CalculateVerifierDigitTest and result;

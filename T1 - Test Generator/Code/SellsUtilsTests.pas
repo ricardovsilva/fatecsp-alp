@@ -43,7 +43,7 @@ implementation
     target.Quantity := 39;
     target.Product := targetProduct;
 
-    expected := '1958-2;2014-08-27;39;35.20';
+    expected := '1958-2;2014-08-27;39;35.20;';
 
     actual := SellToString(target);
 

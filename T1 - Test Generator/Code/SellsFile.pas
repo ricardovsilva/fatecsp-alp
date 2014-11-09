@@ -1,7 +1,9 @@
 unit SellsFile;
 interface
 	uses
-		ProductUtils;
+		DateTimeUtils,
+		ProductUtils,
+		SellsUtils;
 
 	function GetsTotalSellsByDate(year, month, day : integer; sellsFilePath : string) : Real;
 
@@ -20,8 +22,30 @@ implementation
 	 *   day - day of date to gets total of sells
 	 *   sellsFilePath - path of file with sells *)
 	function GetsTotalSellsByDate(year, month, day : integer; sellsFilePath : string) : Real;
+	var
+		fileVar: Text;
+		currentSell : Sell;
+		currentLine, dateToSearch : string;
+		totalSelled : Real;
 	begin
-		Writeln('Funcao GetsTotalSellsByDate nao esta implementada ainda.')
+		totalSelled := 0;
+		dateToSearch := GetsDateTime(year, month, day);
+
+		Assign(fileVar, sellsFilePath);
+    Reset(fileVar);
+
+    while not EOF(fileVar) do
+    begin
+    	Readln(fileVar, currentLine);
+    	currentSell := StringToSell(currentLine);
+
+    	if currentSell.DateTime = dateToSearch then
+    		totalSelled := totalSelled + (currentSell.Price);
+    end;
+
+    Close(fileVar);
+    
+    GetsTotalSellsByDate := totalSelled;
 	end;
 
 	(*Its function receives one product code, and returns the sum of sells
