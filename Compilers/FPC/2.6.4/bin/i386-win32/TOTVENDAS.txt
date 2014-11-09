@@ -46,4 +46,7 @@ TOTAIS DE VENDAS POR PRODUTO:
 
 TOTAL E ESTATÍSTICAS DO MÊS
 Total de Vendas                    1566084,63
+Quantidade de produtos vendidos    51462
 Média de Vendas por dia útil       62643,39
+Média de Vendas por ítem           30,43
+Média de Vendas Por Produto:       1,79

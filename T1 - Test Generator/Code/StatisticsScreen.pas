@@ -16,7 +16,11 @@ implementation
 		GenerateTotalSellsPerDay(statisticsPath, sellsPath);
 		GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath);
 		GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath);
+		GenerateTotalOfProductsSelled(statisticsPath, sellsPath);
 		GenerateMediumOfSells(statisticsPath, sellsPath, productsPath);
+		GenerateMediumPerSell(statisticsPath, sellsPath);
+		GenerateMediumPerProduct(statisticsPath, sellsPath, productsPath);
+		Writeln('Arquivo gerado com sucesso! Pressione qualquer tecla para retornar ao menu anterior.')
 		Readkey;
 	end;
 end.

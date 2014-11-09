@@ -4,6 +4,9 @@ interface
 	procedure GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath : string);
 	procedure GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath : string);
 	procedure GenerateMediumOfSells(statisticsPath, sellsPath, productsPath : string);
+	procedure GenerateTotalOfProductsSelled(statisticsPath, sellsPath : string);
+	procedure GenerateMediumPerSell(statisticsPath, sellsPath : string);
+	procedure GenerateMediumPerProduct(statisticsPath, sellsPath, productPath : string);
 
 implementation
 	uses
@@ -142,7 +145,64 @@ implementation
 		Assign(statisticsFile, statisticsPath);
 		Append(statisticsFile);
 
-		Writeln(statisticsFile, 'Média de Vendas por dia útil       ', FloatToStrF(medium, fffixed, 12, 2));
+		Writeln(statisticsFile,'Média de Vendas por dia útil       ', FloatToStrF(medium, fffixed, 12, 2));
+
+		Close(statisticsFile);
+	end;
+
+	procedure GenerateTotalOfProductsSelled(statisticsPath, sellsPath : string);
+	var
+		variableName: Integer;
+		statisticsFile : Text;
+		total : real;
+	begin
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		total := GetsQuantityOfSelledProduct(sellsPath);
+		Writeln(statisticsFile, 'Quantidade de produtos vendidos    ', FloatToStrF(total, fffixed, 12, 0));
+
+		Close(statisticsFile);
+	end;
+
+	procedure GenerateMediumPerSell(statisticsPath, sellsPath : string);
+	var
+		numberOfSells : real;
+		totalOfSells, medium : real;
+		sellsFile, statisticsFile : text;
+	begin
+		totalOfSells := GetsTotalSelled(sellsPath);
+		numberOfSells := 0;
+
+		numberOfSells := GetsQuantityOfSelledProduct(sellsPath);
+
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		medium := totalOfSells / numberOfSells;
+
+		Writeln(statisticsFile, 'Média de Vendas por ítem           ', FloatToStrf(medium, fffixed, 12, 2));
+		Close(statisticsFile);
+	end;
+
+	procedure GenerateMediumPerProduct(statisticsPath, sellsPath, productPath : string);
+	var
+		quantitySelled: Real;
+		totalSelled : Real;
+		quantityOfProducts : integer;
+		medium : real;
+		statisticsFile : Text;
+	begin
+		totalSelled := GetsTotalSelled(sellsPath);
+		quantitySelled := GetsQuantityOfSelledProduct(sellsPath);
+		quantityOfProducts := LengthOfProducts(GetsProducts(productPath));
+
+		medium := (totalSelled / quantitySelled) / quantityOfProducts;
+
+		Assign(statisticsFile, statisticsPath);
+		Append(statisticsFile);
+
+		Writeln(statisticsFile, 'Média de Vendas Por Produto:       ', FloatToStrf(medium, fffixed, 12, 2));
 
 		Close(statisticsFile);
 	end;
