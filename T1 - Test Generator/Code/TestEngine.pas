@@ -19,6 +19,7 @@ Begin
   result := RemoveVerifierDigitTest and result;
 
   Writeln('--------SellsFileTests--------');
+  result := GetsTotalSellsByProductTest and result;
   result := GetsTotalSellsByDateTest and result;
   result := GetsTotalSelledTest and result;
 

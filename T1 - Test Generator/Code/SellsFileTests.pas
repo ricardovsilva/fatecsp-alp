@@ -6,6 +6,7 @@ interface
 
   function GetsTotalSellsByDateTest : Boolean;
   function GetsTotalSelledTest : Boolean;
+  function GetsTotalSellsByProductTest : Boolean;
 
 implementation
   uses
@@ -40,5 +41,19 @@ implementation
       actual := GetsTotalSelled(target);
 
       GetsTotalSelledTest := AssertReal(expected, actual, 'SellsFileTests.GetsTotalSelledTest');
+    end;
+
+    function GetsTotalSellsByProductTest : Boolean;
+    var
+      target, targetCode: string;
+      expected, actual : real;
+    begin
+      target := 'VendasTest.txt';
+      targetCode := '6415';
+
+      expected := 788.16;
+      actual := GetsTotalSellsByProduct(targetCode, target);
+
+      GetsTotalSellsByProductTest := AssertReal(expected, actual, 'SellsFileTests.GetsTotalSellsByProductTest');
     end;
 end.
