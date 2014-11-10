@@ -74,6 +74,7 @@ implementation
   function SellToString(sellToParse : Sell) : string;
   const
     decimalLength = 2;
+	decimalSepartor = '.';
   var
     sellString : string;
     quantity : string;
@@ -83,7 +84,7 @@ implementation
     sellString := concat(sellToParse.Product.Code, '-', CalculateVerifierDigit(sellToParse.Product.Code),';');
     sellString := concat(sellString,sellToParse.Datetime,';');
     sellString := concat(sellString,quantity,';');
-    sellString := concat(sellString,RealToStr(sellToParse.Product.Price, decimalLength), ';');
+    sellString := concat(sellString,RealToStr(sellToParse.Product.Price, decimalLength, decimalSepartor), ';');
 
     SellToString := sellString;
   end;
