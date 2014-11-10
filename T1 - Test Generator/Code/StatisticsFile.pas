@@ -7,7 +7,8 @@ interface
 	procedure GenerateTotalOfProductsSelled(statisticsPath, sellsPath : string);
 	procedure GenerateMediumPerSell(statisticsPath, sellsPath : string);
 	procedure GenerateMediumPerProduct(statisticsPath, sellsPath, productPath : string);
-
+    procedure ClearStatisticsFile(statisticsPath: string);
+	
 implementation
 	uses
 	 SellsUtils,
@@ -205,5 +206,14 @@ implementation
 		Writeln(statisticsFile, 'Média de Vendas Por Produto:       ', FloatToStrf(medium, fffixed, 12, 2));
 
 		Close(statisticsFile);
+	end;
+	
+	procedure ClearStatisticsFile(statisticsPath: string);
+	var
+	  statisticsFile: Text;
+	begin
+	  Assign(statisticsFile, statisticsPath);
+	  Rewrite(statisticsFile);
+	  Close(statisticsFile);
 	end;
 end.

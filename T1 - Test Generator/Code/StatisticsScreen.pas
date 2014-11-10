@@ -13,6 +13,7 @@ implementation
 	begin
 		clrscr;
 		Writeln('Gerando arquivo de estatistica...');
+		ClearStatisticsFile(statisticsPath);
 		GenerateTotalSellsPerDay(statisticsPath, sellsPath);
 		GenerateTotalSellsPerProduct(statisticsPath, sellsPath, productsPath);
 		GenerateTotalAndStatisticsOfMonth(statisticsPath, sellsPath, productsPath);
@@ -20,7 +21,7 @@ implementation
 		GenerateMediumOfSells(statisticsPath, sellsPath, productsPath);
 		GenerateMediumPerSell(statisticsPath, sellsPath);
 		GenerateMediumPerProduct(statisticsPath, sellsPath, productsPath);
-		Writeln('Arquivo gerado com sucesso! Pressione qualquer tecla para retornar ao menu anterior.')
+		Writeln('Arquivo gerado com sucesso! Pressione qualquer tecla para retornar ao menu anterior.');
 		Readkey;
 	end;
 end.
