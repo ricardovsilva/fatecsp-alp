@@ -8,19 +8,23 @@
 # PS: Blank lines will be ignored.
 
 0583;Borracha Faber Castel;4.82;
+
 1019;Lapiseira Pentel 0.5mm;15.20;
 1211;Lapiseira Pentel 0.7mm;18.30;
 1253;Lapiseira Pentel 1.6mm;25.20;
 1669;Compasso Pentel 1.6mm;72.50;
+
 2074;Esquadro Trident;12.80;
 2316;Regua 30cm Trident;20.00;
 2520;Transferidor Trident;5.20;
+
 3254;Grafite Pentel 0.5mm;6.37;
 3473;Grafite Pentel 0.7mm;7.20;
 3641;Grafite Pentel 1.6mm;7.80;
+
 4814;Prancheta Des. Tec. Trident;43.72;
+
 6415;Folhas Com Margem;0.25;
 6723;Folha Comum;0.10;
-8383;Mesa Para Des. Tec.;182.45;1234;Caneta Esfereografica Pentel;82.54
-8974;Mesa de Des. Tec. Azul;200.25
-4917;Teste;55.21
+
+8383;Mesa Para Des. Tec.;182.45;
