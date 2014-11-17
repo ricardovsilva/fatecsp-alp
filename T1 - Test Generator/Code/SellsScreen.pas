@@ -78,7 +78,7 @@ implementation
 
     GenerateRandomSells(sellsFile, productsFile, year, month, quantity, percentage);
 
-    Writeln(quantity, ' vendas geradas com sucesso!');
+    Writeln('Vendas geradas com sucesso!');
     Writeln('Pressione qualquer tecla para voltar ao menu anterior...');
     Readkey;
   end;

@@ -2,7 +2,7 @@ Program TestGenerator ;
   uses
     ProductHandler,
     StringUtils,
-    Realutils,
+    RealUtils,
     RandomUtils,
     DateTimeUtils,
     ProductUtils,
@@ -24,4 +24,4 @@ Begin
   Clrscr;
   Writeln('Obrigado por utilizar o gerador automatico de testes...');
   Readkey;
-End.
+end.
